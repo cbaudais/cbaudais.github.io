@@ -1,0 +1,1236 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="themify-icons.css">
+        <!-- Baudais_Christina_Assignement_2 -->
+    </head>
+    <title>Webstore.</title>
+    
+    <!--    CSS below  ------------------------------------------------------>
+    <style>
+        
+        /* header ******************************************************/
+        
+        body {
+            margin: 0px;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            margin: 0px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        main {
+            flex-grow: 1;
+            margin: 0;
+        }
+
+        nav {
+            position: sticky;
+            top: 0px;
+            background-color: white;
+            margin: 0px;
+            padding: 0px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            width: 100%;
+            justify-content: space-around; /*now THIS is a life saver*/
+            /* text-align: center; */
+            z-index: 5;
+        }
+        nav div {
+            display: block;
+        }
+        
+        h1 {
+            padding: 10px;
+            font-size: 2rem;
+            margin: 0px;
+        }
+        
+        a {
+            color: inherit;
+            transition: 0.5s;
+        }
+        p {font-size: 1rem;}
+        
+        h2 {
+            font-size: 3vw;
+            font-weight: 700;
+            margin: 30px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        img {width: 100%;}
+
+        .menu, .menu-icon {
+            margin: 0px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .menu li, .menu-icon li {
+            display: inline-flex;
+            list-style-type: none;
+            padding: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .menu li:hover, a:hover {
+            color: #ff5858;
+        }
+        
+        .menu-icon li:hover {
+            /* display: inline-block; */
+            color: #ff5858;
+        }
+
+        .section {
+            position: relative;
+            background-color: white;
+            text-align: center;
+            margin: 0px 5vw;
+            padding: 0 10vw;
+            padding-bottom: 40px;
+        }
+
+        .sec-container {
+            display: flex;
+            overflow: hidden;
+            margin: 20px 0px;
+            justify-content: space-between;
+        }
+        
+        /* banner ******************************************************/
+        
+        .banner {
+            /* position: relative; */
+            padding: 40px;
+            padding-right: 80%;
+            background-color: aqua;
+        }
+        
+        .banner1 {background-image: url(pictures/ban%201.jpg);}
+        .banner2 {background-image: url(pictures/ban%202.jpg);}
+        
+        .banner1, .banner2 {
+            background-size: 100%;
+            background-repeat: no-repeat;
+            padding: 40px 0px;
+            margin-bottom: 60px;
+        }
+        
+        .banner-content div {
+            position: relative;
+            text-align: center;
+            width: 70%;
+            display: inline-block;
+            margin: 20px;
+        }
+        
+        .smol-bold {
+            font-size: 1.5vw;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #585858;
+        }
+        
+        .banner-title, .banner-cursive, .coll {
+            margin-top: 0px;
+            font-size: 5vw;
+            font-weight: 500;
+        }
+        
+        .banner-cursive {
+            font-family: 'Courgette', cursive;
+            color: black;
+            margin: 0px;
+        }
+
+        .coll {
+            padding-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 3vw;
+            font-weight: 300;
+        }
+        
+        /* shop now ******************************************************/
+        
+        .shopbtn {
+            text-transform: uppercase;
+            background-color: #ff5858;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 1rem;
+            font-size: 2vw;
+        }
+        
+        .shopbtn:hover {
+            color: black;
+            background-color: white;
+            transition: 0.5s;
+        }
+        
+        .ti-star {
+            color: #000;
+        }
+        
+        .item {
+            position: relative;
+            vertical-align: middle;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .item img {max-height: 600px;}
+
+        .item:hover .overlay {
+            opacity: 100%;
+            height: 100%;
+        }
+        
+        /* common overlay buttons ******************************************/
+        
+        .overlay {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            opacity: 0%;
+            overflow: hidden;
+            width: 100%;
+            height: 0px;
+            transition: .5s ease;
+        }
+
+        .buttons {
+            text-decoration: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .buttons a {
+            display: inline-flex;
+            color: black;
+            background-color: white;
+            padding: 15px;
+            margin: 5px;
+            font-size: 15px;
+            border-radius: 50%;
+        }
+        
+        .buttons a:hover {
+            color: white;
+            background-color: #ff5858;
+        }
+        
+        /* popular carousel ***********************************************/
+        
+        .pop {
+            display: inline-block;
+        }
+        
+        .slide {
+            /* position: relative; */
+            display: none;
+            overflow: hidden;
+            margin: 20px 0px;
+            justify-content: space-between;
+        }
+        
+        /* The dots/bullets/indicators */
+        .dot {
+            height: 1vw;
+            width: 1vw;
+            margin: 0 auto;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.8s ease;
+        }
+
+        .active {
+            background-color: #ff5858;
+            color: #ff5858;
+        }
+        
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0.4
+            } 
+            to {
+                opacity: 1
+            }
+        }
+
+        .pop img {
+            max-height: 400px;
+        }
+        
+        /* icon boxes *****************************************************/
+        .ibox {
+            position: relative;
+            border-style: solid;
+            border-color: #ebeef0;
+            /* padding: 2vw;
+            margin: 1.5vw; */
+            width: 15vw;
+            white-space: normal;
+            margin: 40px;
+        }
+        
+        .ibox b {
+            color: black;
+            text-transform: uppercase;
+        }
+        
+        .ibox p {
+            color: #888888;
+            font-size: 0.5em;
+        }
+
+        .ibox-container {
+            /* display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr; */
+            /* gap: 2rem; */
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            margin: auto;
+            justify-content: space-around;
+        }
+        
+        /* journal ******************************************************/
+        
+        .jour {
+            margin: 10px;
+            justify-content: space-between;
+            color: #585858;
+            width: 100%;
+            min-height: 100%;
+        }
+        
+        .jour * {
+            display: block;
+            text-align: left;
+        }
+
+        .jour img {
+            max-width: 100%;
+            max-height: 450px;
+            margin-bottom: 20px;
+        }
+        
+        .date * {
+            display: inline-block;
+        }
+
+        .comment *, a.comment {
+            display: inline-block;
+            padding: 5px;
+            font-size: 12px;
+        }
+        
+        .post {
+            font-weight: 700;
+            /* font-size: 20px; */
+            color: black;
+            padding: 15px 0px 5px 0px;
+            /* height: 80px; */
+        }
+    
+        /* follow us ******************************************************/
+        
+        .overf {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: #ff5858;
+            opacity: 60%;
+            overflow: hidden;
+            width: 100%;
+            height: 0px;
+            transition: .5s ease;
+        }
+
+        .item:hover .overf {
+            opacity: 60%;
+            height: 100%;
+        }
+
+        .insta {
+            color: white;
+            font-size: 6vw;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        /* footer ******************************************************/
+        
+        footer {
+            width: 100%;
+            background-color: antiquewhite;
+            justify-content: center;
+            margin: 0px;
+            padding: 0 10vw;
+        }
+        
+        .container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: left;
+            /* align-items: flex-end; */
+            padding: 80px 0px;
+            margin: 0px;
+        }
+        
+        .clm {
+            display: block;
+            padding: 20px 50px;
+            min-width: 250px;
+        }
+        
+        .clm p {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .clm a {
+            display: block;
+            line-height: 30px;
+            color: #585858;
+        }
+        
+        .clm a:hover {
+            color: #ff5858;
+        }
+        
+        .logo a {
+            display: inline-flex;
+            float: left;
+            background-color: white;
+            padding: 10px;
+            margin: 3px;
+            transition: 0.5s ease;
+        }
+        
+        .logo a:hover {
+            background-color: #ff5858;
+            color: white;
+        }
+        
+        .app .app-container {
+            display: inline-block;
+            border-radius: 5px;
+            background-color: white;
+            color: #585858;
+            padding: 5px;
+            padding-right: 15px;
+            margin: 5px;
+            margin-left: 0px;
+            transition: 0.5s;
+            position: relative;
+        }
+        
+        .acon {
+            display: flex;
+            padding: 5px 15px 5px 5px;
+        }
+        
+        .icon {
+            color: #ff5858;
+            cursor: pointer;
+        }
+        
+        .name1 {
+            color: #585858;
+            line-height: 20px;
+            font-weight: 300;
+            font-size: 14px;
+        }
+        
+        .name2 {
+            color: #585858;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        /* for the dumb link that wont appear */
+        .app .app-container .acon a {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        
+        .app .app-container:hover {
+            background-color: #ff5858;
+        }
+        
+        .app .app-container:hover .icon, .app .app-container:hover .name1, .app .app-container:hover .name2 {
+            color: white;
+            /* icons within divs within agdfhjslk are a pain */
+        }
+
+    </style>
+    
+    <body>
+        <main>
+            <nav>
+                <div>
+                    <h1>Webstore<span style="color: #ff5858">.</span></h1>
+                </div>
+                <div>
+                    <ul class="menu">
+                        <li><a href="#" style="text-decoration: none" class="nav-item"><b>HOME</b></a></li>
+                        <li><a href="#" style="text-decoration: none" class="nav-item"><b>SHOP</b></a></li>
+                        <li><a href="#" style="text-decoration: none" class="nav-item"><b>BLOG</b></a></li>
+                        <li><a href="#" style="text-decoration: none" class="nav-item"><b>PRODUCTS</b></a></li>
+                        <li><a href="#" style="text-decoration: none" class="nav-item"><b>BRANDS</b></a></li>
+                        <li><a href="#" style="text-decoration: none" class="nav-item"><b>CONTACT</b></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="menu-icon">
+                        <li><a href="#" style="text-decoration: none" class="ti-search"></a></li>
+                        <li><a href="#" style="text-decoration: none" class="ti-shopping-cart"></a></li>
+                        <li><a href="#" style="text-decoration: none" class="ti-heart"></a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="banner1">
+                <div class="banner-content">
+                    <div>
+                        <p class="smol-bold">ULTIMATE COLLECTION</p>
+                        <p class="banner-title">Complete Women <br> Fashion Here</p>
+                        <a href="#" style="text-decoration: none" class="shopbtn">Shop Now</a>
+                    </div>
+                    <!-- <img src="pictures/ban%201.jpg"> -->
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Featured Product</h2>
+                <div class="sec-container">
+                    <div class="feat">
+                        <div class="item">
+                            <img src="pictures/skirt%201.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Yellow Women Skirts</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$35.00</p>
+                        </div>
+                    </div>
+                    <div class="feat">
+                        <div class="item">
+                            <img src="pictures/skirt%202.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Yellow Women Skirts</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$35.00</p>
+                        </div>
+                    </div>
+                    <div class="feat">
+                        <div class="item">
+                            <img src="pictures/skirt%203.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Yellow Women Skirts</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$35.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="banner2">
+                <div class="banner-content">
+                    <div>
+                        <p class="banner-cursive">50% Off</p>
+                        <p class="coll">All Women's collection</p>
+                        <a href="#" style="text-decoration: none" class="shopbtn">Shop Now</a>
+                    </div>
+                </div>
+                <!-- <img src="pictures/ban%202.jpg"> -->
+            </div>
+            
+            <div class="section">
+            <h2>Most Popular</h2>
+                    <div class="slide fade">
+                        <div class="pop">
+                            <div class="item">
+                                <img src="pictures/pop%201.jpg">
+                                <div class="overlay">
+                                    <div class="buttons">
+                                    <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ftx">
+                                <p>Yellow Women Skirts</p>
+                                <div class="rate">
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                                <p style="font-weight: 700">$35.00</p>
+                            </div>
+                        </div>
+                        <div class="pop">
+                            <div class="item">
+                                <img src="pictures/pop%202.jpg">
+                                <div class="overlay">
+                                    <div class="buttons">
+                                    <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ftx">
+                                <p>Yellow Women Skirts</p>
+                                <div class="rate">
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                                <p style="font-weight: 700">$20.00</p>
+                            </div>
+                        </div>
+                        <div class="pop">
+                            <div class="item">
+                                <img src="pictures/pop%203.jpg">
+                                <div class="overlay">
+                                    <div class="buttons">
+                                    <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ftx">
+                                <p>Yellow Women Skirts</p>
+                                <div class="rate">
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                                <p style="font-weight: 700">$50.00</p>
+                            </div>
+                        </div>
+                        <div class="pop">
+                            <div class="item">
+                                <img src="pictures/pop%204.jpg">
+                                <div class="overlay">
+                                    <div class="buttons">
+                                    <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ftx">
+                                <p>Yellow Women Skirts</p>
+                                <div class="rate">
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                                <p style="font-weight: 700">$35.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide fade">
+                        <div class="pop">
+                            <div class="item">
+                                <img src="pictures/pop%205.jpg">
+                                <div class="overlay">
+                                    <div class="buttons">
+                                    <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ftx">
+                                <p>Yellow Women Skirts</p>
+                                <div class="rate">
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                                <p style="font-weight: 700">$20.00</p>
+                            </div>
+                        </div>
+                        <div class="pop">
+                            <div class="item">
+                                <img src="pictures/pop%206.jpg">
+                                <div class="overlay">
+                                    <div class="buttons">
+                                    <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ftx">
+                                <p>Yellow Women Skirts</p>
+                                <div class="rate">
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                                <p style="font-weight: 700">$10.00</p>
+                            </div>
+                        </div>
+                        <div class="pop">
+                            <div class="item">
+                                <img src="pictures/pop%207.jpg">
+                                <div class="overlay">
+                                    <div class="buttons">
+                                    <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ftx">
+                                <p>Yellow Women Skirts</p>
+                                <div class="rate">
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                                <p style="font-weight: 700">$20.00</p>
+                            </div>
+                        </div>
+                        <div class="pop">
+                            <div class="item">
+                                <img src="pictures/pop%208.jpg">
+                                <div class="overlay">
+                                    <div class="buttons">
+                                    <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                    <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ftx">
+                                <p>Yellow Women Skirts</p>
+                                <div class="rate">
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                                <p style="font-weight: 700">$35.00</p>
+                            </div>
+                        </div>
+                    </div>
+                <br>
+
+                <div style="text-align:center">
+                <span class="dot"></span> 
+                <span class="dot"></span> 
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="ibox-container">
+                    <div class="ibox">
+                        <div class="item">
+                            <img src="icons/1.png">
+                            <p><b>Money back guarantee</b></p>
+                            <p>Great, amazing, awesome LOOT.</p>
+                        </div>
+                    </div>
+                    <div class="ibox">
+                        <div class="item">
+                            <img src="icons/2.png">
+                            <p><b>Free delivery</b></p>
+                            <p>It goes <i>zoom zoom</i> !</p>
+                        </div>
+                    </div>
+                    <div class="ibox">
+                        <div class="item">
+                            <img src="icons/3.png">
+                            <p><b>Always support</b></p>
+                            <p>Professor Phil is a god.</p>
+                        </div>
+                    </div>
+                    <div class="ibox">
+                        <div class="item">
+                            <img src="icons/4.png">
+                            <p><b>Secure payment</b></p>
+                            <p>It protecc, it attacc, but most importantly, it secUre.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Trending Products</h2>
+                <div class="sec-container">
+                    <div class="trend">
+                        <div class="item">
+                            <img src="pictures/trend%201.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Trending Product</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$35.00</p>
+                        </div>
+                    </div>
+                    <div class="trend">
+                        <div class="item">
+                            <img src="pictures/trend%202.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Trending Product</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$15.00</p>
+                        </div>
+                    </div>
+                    <div class="trend">
+                        <div class="item">
+                            <img src="pictures/trend%203.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Trending Product</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$25.00</p>
+                        </div>
+                    </div>
+                    <div class="trend">
+                        <div class="item">
+                            <img src="pictures/trend%204.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Trending Product</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$35.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sec-container">
+                    <div class="trend">
+                        <div class="item">
+                            <img src="pictures/trend%205.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Trending Product</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$15.00</p>
+                        </div>
+                    </div>
+                    <div class="trend">
+                        <div class="item">
+                            <img src="pictures/trend%206.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Trending Product</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$25.00</p>
+                        </div>
+                    </div>
+                    <div class="trend">
+                        <div class="item">
+                            <img src="pictures/trend%207.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Trending Product</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$25.00</p>
+                        </div>
+                    </div>
+                    <div class="trend">
+                        <div class="item">
+                            <img src="pictures/trend%208.jpg">
+                            <div class="overlay">
+                                <div class="buttons">
+                                <a href="#" style="text-decoration: none" class="ti-eye"></a>
+                                <a href="#" style="text-decoration: none" class="ti-heart"></a>
+                                <a href="#" style="text-decoration: none" class="ti-shopping-cart"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ftx">
+                            <p>Trending Product</p>
+                            <div class="rate">
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                                <i class="ti-star"></i>
+                            </div>
+                            <p style="font-weight: 700">$25.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Journal</h2>
+                <div class="sec-container">
+                    <div class="jour">
+                        <a href="#same link#"><img src="pictures/jour%201.jpg"></a>
+                        <a href="#" style="text-decoration: none" class="date"><i class="ti-layout-column2-alt" style="color: #ff5858"></i> 04 April 2020</a>
+                        <a href="#same link#" style="text-decoration: none" class="post">This is such an inspirational quote...with double the fun...!</a>
+                        <hr>
+                        <a href="#" class="comment" style="text-decoration: none"><i class="ti-package"></i> Women Fashion</a>
+                        <a href="#" class="comment" style="text-decoration: none"><i class="ti-comments"></i> # Comments</a>
+                    </div>
+                    <div class="jour">
+                        <a href="#same link#"><img src="pictures/jour%202.jpg"></a>
+                        <a href="#" style="text-decoration: none" class="date"><i class="ti-layout-column2-alt" style="color: #ff5858"></i> 04 April 2020</a>
+                        <a href="#same link#" style="text-decoration: none" class="post">This is a super-duper amazing cute quote...!</a>
+                        <hr>
+                        <a href="#" class="comment" style="text-decoration: none"><i class="ti-package"></i> Women Fashion</a>
+                        <a href="#" class="comment" style="text-decoration: none"><i class="ti-comments"></i> # Comments</a>
+                    </div>
+                    <div class="jour">
+                        <a href="#same link#"><img src="pictures/jour%203.jpg"></a>
+                        <a href="#" style="text-decoration: none" class="date"><i class="ti-layout-column2-alt" style="color: #ff5858"></i> 04 April 2020</a>
+                        <a href="#same link#" style="text-decoration: none" class="post">This is a great inspirational quote...!</a>
+                        <hr>
+                        <a href="#" class="comment" style="text-decoration: none"><i class="ti-package"></i> Women Fashion</a>
+                        <a href="#" class="comment" style="text-decoration: none"><i class="ti-comments"></i> # Comments</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Follow Us</h2>
+                <div class="sec-container">
+                    <div class="item">
+                        <img src="pictures/follow%201.jpg">
+                        <div class="overf">
+                            <a href="#" class="insta">
+                            <i class="ti-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="pictures/follow%202.jpg">
+                        <div class="overf">
+                            <a href="#" class="insta">
+                            <i class="ti-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="pictures/follow%203.jpg">
+                        <div class="overf">
+                            <a href="#" class="insta">
+                            <i class="ti-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="pictures/follow%204.jpg">
+                        <div class="overf">
+                            <a href="#" class="insta">
+                            <i class="ti-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <footer>
+                <div class="container">
+                    <div class="clm">
+                        <p>About Us</p>
+                        <a href="#" style="text-decoration: none">Who we are</a>
+                        <a href="#" style="text-decoration: none">Work with us</a>
+                        <a href="#" style="text-decoration: none">Become a supplier</a>
+                        <a href="#" style="text-decoration: none">Investor relations</a>
+                        <a href="#" style="text-decoration: none">Our devices</a>
+                        <a href="#" style="text-decoration: none">Affiliate program</a>
+                    </div>
+                    <div class="clm">
+                        <p>Useful Links</p>
+                        <a href="#" style="text-decoration: none">Contact us</a>
+                        <a href="#" style="text-decoration: none">Common FAQs</a>
+                        <a href="#" style="text-decoration: none">Terms &amp; Conditions</a>
+                        <a href="#" style="text-decoration: none">Return Policy</a>
+                        <a href="#" style="text-decoration: none">Cancellation</a>
+                        <a href="#" style="text-decoration: none">Track Orders</a>
+                    </div>
+                    <div class="clm">
+                        <p>Online Shopping</p>
+                        <a href="#" style="text-decoration: none">Men shopping</a>
+                        <a href="#" style="text-decoration: none">Women shopping</a>
+                        <a href="#" style="text-decoration: none">Gifts cards</a>
+                        <a href="#" style="text-decoration: none">Home &amp; living</a>
+                        <a href="#" style="text-decoration: none">Electronics</a>
+                        <a href="#" style="text-decoration: none">Accessories</a>
+                    </div>
+                    <div class="clm">
+                        <p>Experience App on Mobile</p>
+                        <!-- note for future: buttons with text and icon inside, just to this following div in div in div asdfghjkl took me too long-->
+                        <div class="app">
+                            <div class="app-container">
+                                <div class="acon">
+                                    <a href="#" style="text-decoration: none; display: inline-flex"></a>
+                                    <i class="ti-android icon" style="position: relative; font-size: 20px; padding: 10px"></i>
+                                    <p style="margin: 0px"><span class="name1">Get it on</span>
+                                    <br>
+                                    <span class="name2">Google Play</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="app-container">
+                                <div class="acon">
+                                    <a href="#" style="text-decoration: none; display: inline-flex"></a>
+                                    <i class="ti-apple icon" style="position: relative; font-size: 20px; padding: 10px"></i>
+                                    <p style="margin: 0px"><span class="name1">Get it on</span>
+                                    <br>
+                                    <span class="name2">App Store</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <p>Follow Us</p>
+                        <div class="logo">
+                            <a href="#" style="text-decoration: none"><i class="ti-facebook"></i></a>
+                        </div>
+                        <div class="logo">
+                            <a href="#" style="text-decoration: none"><i class="ti-twitter"></i></a>
+                        </div>
+                        <div class="logo">
+                            <a href="#" style="text-decoration: none"><i class="ti-pinterest"></i></a>
+                        </div>
+                        <div class="logo">
+                            <a href="#" style="text-decoration: none"><i class="ti-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <p style="text-align: center; margin: 0px; padding: 10px; color: #585858">Copyright &copy; 2020 All rights reserved.</p>
+            </footer>
+        </main>
+        
+<!--    Javascript below  ------------------------------------------------------>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+        
+        <script>
+            // window.onbeforeunload = function() {
+            //     window.scrollTo(0, 1250);
+            // }
+            
+            var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("slide");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "flex";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 3500); // Change image every 3.5 seconds
+            }
+            
+            //cant do multiple at same time, unless remove second line ti-star but then no backtrack
+            // $('.rate .ti-star').click(function () {
+            //     $('.rate .ti-star').removeClass('active');
+            //     $(this).prevAll('.ti-star').addBack().addClass('active');
+            //     //prevAll is prev sibling of matching
+            // });
+            
+            // good star rating
+            $('.ti-star').click(function(){
+                // previous .ti-star this same colour as on click place, parent().find('element') also works
+            $(this).prevAll('.ti-star').css({"color": "#ff5858"});
+                // on click this colour
+            $(this).css({"color": "#ff5858"});
+                // make sure rest is black
+            $(this).nextAll().css({"color": "black"});
+            });
+                    
+        </script>
+    </body>
+</html>
