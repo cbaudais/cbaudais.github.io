@@ -95,7 +95,7 @@
             background-color: white;
             text-align: center;
             margin: 0px 5vw;
-            padding: 0 10vw;
+            padding: 0 5vw;
             padding-bottom: 40px;
         }
 
@@ -108,29 +108,25 @@
         
         /* banner ******************************************************/
         
-        .banner {
-            /* position: relative; */
-            padding: 40px;
-            padding-right: 80%;
-            background-color: aqua;
-        }
-        
         .banner1 {background-image: url(pictures/ban%201.jpg);}
         .banner2 {background-image: url(pictures/ban%202.jpg);}
         
         .banner1, .banner2 {
-            background-size: 100%;
-            background-repeat: no-repeat;
-            padding: 40px 0px;
+            padding: 50px 0px;
             margin-bottom: 60px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            position: relative;
         }
         
-        .banner-content div {
+        .banner-content {
             position: relative;
             text-align: center;
-            width: 70%;
+            width: 60%;
             display: inline-block;
             margin: 20px;
+            margin-top: 50px;
         }
         
         .smol-bold {
@@ -388,14 +384,15 @@
         /* footer ******************************************************/
         
         footer {
-            width: 100%;
+            /* width: 100%; */
             background-color: antiquewhite;
             justify-content: center;
             margin: 0px;
-            padding: 0 10vw;
+            padding: 0 5vw;
         }
         
         .container {
+            position: relative;
             width: 100%;
             display: flex;
             flex-wrap: wrap;
@@ -525,11 +522,11 @@
             
             <div class="banner1">
                 <div class="banner-content">
-                    <div>
+                    <!-- <div> -->
                         <p class="smol-bold">ULTIMATE COLLECTION</p>
                         <p class="banner-title">Complete Women <br> Fashion Here</p>
                         <a href="#" style="text-decoration: none" class="shopbtn">Shop Now</a>
-                    </div>
+                    <!-- </div> -->
                     <!-- <img src="pictures/ban%201.jpg"> -->
                 </div>
             </div>
@@ -611,11 +608,11 @@
             
             <div class="banner2">
                 <div class="banner-content">
-                    <div>
+                    <!-- <div> -->
                         <p class="banner-cursive">50% Off</p>
                         <p class="coll">All Women's collection</p>
                         <a href="#" style="text-decoration: none" class="shopbtn">Shop Now</a>
-                    </div>
+                    <!-- </div> -->
                 </div>
                 <!-- <img src="pictures/ban%202.jpg"> -->
             </div>
