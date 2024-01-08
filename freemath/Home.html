@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+    <title>FreeMath</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+      <style>
+        
+    /* #B8214B -->dark red  #4d4557 -->dark  #29abe2 -->blue  #fbb03b -->yellow #04b59d -->green*/
+          
+         /* Tiny reset thingy */
+         /* #f15a24 -->orange red  #00a99d -->turquoise  #29abe2 -->blue  #fbb03b -->yellow */
+         body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            font-family: 'Quicksand', monospace;
+            background-color: white;
+        }
+    
+    /* header ******************************************************/
+        
+        .nav {
+            background-color: #4d4557; /* nav text color below */
+            display: flex;
+            width: 100%;
+            /* overflow: hidden;*/ /* or else fixed menu's dropdown doesnt show */
+            font-size: 16px;
+            /* if font change, mind the padding for h1 and .nav a */
+            position: fixed;
+            z-index: 5;
+            box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            margin: 0px;
+            padding: 2px 30px 0px;
+            text-align: center;
+        }
+        
+        h1 a:hover {
+            background-color: rgba(0,0,0,0) !important;
+            color: white !important;
+        }
+        
+        .nav a, .dropdown .drop {
+            font-size: inherit;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            color: white;               /* NAV TEXT COLOR HERE */
+            padding: 16px 16px 10px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+            transition: 0.5s;
+        }
+        
+        .nav a:hover, .dropdown:hover .drop {
+            background-color: white;               /* NAV-HOVER COLOR HERE */
+            color: black;
+        }
+        
+        .drop-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+
+        .drop-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .drop-content a:hover {
+            background-color: #cccccc;
+        }
+
+        .dropdown:hover .drop-content {
+            display: block;
+        }
+         
+        .content {
+            display: block;
+            position: absolute;
+            margin: 100px 50px 80px 200px;
+        }
+       
+          
+    /*Parallax****************************************/
+          
+         /* Tiny reset thingy */
+         body,html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+                 /* The height needs to be set to a fixed value for the effect to work.
+                 * 100vh is the full height of the viewport. */
+            height: 100vh;
+                 /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
+            overflow-x: hidden;
+                 /* Enable scrolling on the page. */
+            overflow-y: auto;
+                 /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
+            perspective: 2px;
+        }
+
+        .section {
+                 /* For children to be absolutely positioned relative to the parent. */
+            position: relative;
+                 /* The height of the container. Must be set, but it doesn't really matter what the value is. */
+            height: 72vh;
+                 /* For text formatting. */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+        }
+
+        .parallax::after {
+                 /* Display and position the pseudo-element */
+            content: " ";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+                 /* Move the pseudo-element back away from the camera,
+                 * then scale it back up to fill the viewport.
+                 * Because the pseudo-element is further away, it appears to move more slowly, like in real life. */
+            transform: translateZ(-1px) scale(1.5);
+                 /* Force the background image to fill the whole element. */
+            background-size: 100%;
+                 /* Keep the image from overlapping sibling elements. */
+            z-index: -1;
+        }
+                 /* The styling for the static div. */
+        .static {
+            background-color: white;
+            height: 350px;
+        }
+                 /* Sets the actual background images to adorable kitties. This part is crucial. */
+
+
+        .bg1::after {
+            background-image: url(images/Banner%20test.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: block;
+        }
+
+        .bg2::after {
+            background-size: 100%;
+            background-image: url();
+            background-size: cover;
+            background-repeat: no-repeat;
+            line-height: 500px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bg3::after {
+            background-size: 100%;
+            background-image: url(images/Banner2.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bg4::after {
+            background-image: url();
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: block;
+        }
+
+        .bg5::after {
+            background-image: url(images/Banner2.png);
+            background-size: cover;
+            line-height: 10px;
+            background-repeat: no-repeat;
+            display: block;
+            margin-top: 200px;
+        }
+
+        .kids {
+            margin-left: 30px;
+            height: 335px;
+            padding: 60px 30px 0px;
+            background-color: rgba(255,255,255,0.8);
+            border: 2px solid #fbb03b;
+            width: 100%;
+        }
+
+        .teens {
+            margin-right: auto;
+            height: 335px;
+            padding: 60px 30px 0px;
+            background-color: rgba(255,255,255,0.8);
+            border: 2px solid #04b59d;
+            width: 100%;
+        }
+
+        .adults {
+            margin-left: auto;
+            height: 335px;
+            padding: 60px 30px 0px;
+            background-color: rgba(255,255,255,0.8);
+            border: 2px solid #B81229;
+            width: 100%;
+        }
+
+        .title_1 {
+            font-size: 100pt;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .p1 {
+            font-size: 30pt;
+        }
+
+        .ages {
+            display: inline;
+        }
+        
+        img {
+            border-radius: 5px;
+        }
+          
+        .kids h2 {
+            background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #fbb03b 50%);
+            background-position: -0%;
+            background-size: 200% auto;
+            color: #222;
+            text-decoration: none;
+            transition: 0.5s;  
+        }
+          
+        .teens h2 {
+            background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #04b59d 50%);
+            background-position: -0%;
+            background-size: 200% auto;
+            color: #222;
+            text-decoration: none;
+            transition: 0.5s;  
+        }
+          
+        .adults h2 {
+            background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #B81229 50%);
+            background-position: -0%;
+            background-size: 200% auto;
+            color: #222;
+            text-decoration: none;
+            transition: 0.5s;  
+        }
+          
+        h2:hover {
+            background-position: -50%;
+        }
+     
+        /* GET STARTED BUTTON *************************************/
+          
+        .get_started {
+/*            background-color: white;*/
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            padding: 20px 5px;
+            font-size: 16px;
+            width: 150px; /* need fixed width for later text-indent, the hover stuff */
+            overflow: hidden;
+            transition: all 0.2s linear 0s;
+        }
+        
+        .get_started:after {
+            content: "→"; /* ouuuuu smart! */
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            right: -30px;
+            width: 30px;
+            height: 100%;
+            background-color: rgba(77, 69, 87, 0.2);
+            border-radius: 0px 6px 6px 0px;
+            transition: all 0.2s linear 0s;
+            text-align: center;
+        }
+        
+         .get_started:hover {
+            text-indent: -30px;
+            /* push to left */
+        }
+        
+         .get_started:hover:after {
+            right: 0;
+            text-indent: 0px;
+        }
+          
+                  /*footer*/
+        footer {
+            position: relative;
+            bottom: 0px;
+            margin: 0px;
+            padding: 20px;
+            width: 100%;
+            height: 25%;
+            background-color: #4d4557;
+            color: black;
+        /*            margin-top:100px;*/
+            z-index: 5;
+        }
+          
+      </style>
+    
+   <body>
+      <head>
+         <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+         <div class="nav">
+                <h1><a href="Home.html">FreeMath</a></h1>
+                <a href="Home.html">Home</a>
+                <div class="dropdown">
+                    <button class="drop">Children <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="drop-content">
+                      <a href="Kids_SubChoice.html">All Subjects</a>
+                      <a href="Kids_Quiz.html">Quiz</a>
+                    </div>
+                </div> 
+                <div class="dropdown">
+                    <button class="drop">Teens <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="drop-content">
+                      <a href="Teens_SubChoice.html">All Subjects</a>
+                      <a href="Teens_Quiz.html">Quiz</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="drop">Adults <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="drop-content">
+                      <a href="Adults_SubChoice.html">All Subjects</a>
+                      <a href="Adults_Quiz.html">Quiz</a>
+                    </div>
+                </div>
+            </div>
+        </head>
+       
+      <main class="wrapper">
+         <section class="section parallax bg1" style="height: 90vh">
+            <h1 class="title_1"><br>FreeMath.
+             <p class="p1" style="text-transform: uppercase;"><br> Quick, fun math~!</p>
+             </h1>
+         </section>
+          
+         <div class="ages">
+             
+            <section class="section parallax bg2">
+                <img src="images/Kids.jpg" style="height:400px; width: auto; margin-left: 45px; box-shadow: 20px 20px 25px grey;">
+                <div class="kids">
+                    <h2>Children</h2>
+                    <p class="p4"> Hello there! Welcome to FreeMath! In this section, you will learn about:<br> Addition, Subtraction, Multiplication, and Division! </p>
+                    <br>
+                    <a href="Kids_SubChoice.html" class="get_started" style="background-color: #fbb03b;">Get Started</a>
+               </div>
+            </section>
+            
+            <section class="section parallax bg3">
+                <div class="teens">
+                    <h2>Teens</h2>
+                    <p class="p4"> Hi there! Welcome to FreeMath! In this section, you will learn about:<br> Negative Numbers, Functions, Algebra, and Factorization! </p>
+                    <br>
+                    <a href="Teens_SubChoice.html" class="get_started" style="background-color: #04b59d;">Get Started</a>
+               </div>
+               <img src="images/Teens.jpg" style="height:400px; width: auto; margin-left: 45px; box-shadow: 20px 20px 25px grey;">
+            </section>
+            
+            <section class="section parallax bg5">
+                <img src="images/Adults.jpg" style="height:400px; width: auto; margin-right: 45px; box-shadow: 20px 20px 25px grey;">
+                <div class="adults">
+                    <h2>Adults</h2>
+                    <p class="p4"> Welcome to FreeMath! In this section, you will learn about:<br> Calculus, Limits, and Derivatives! </p>
+                    <br>
+                    <a href="Adults_SubChoice.html" class="get_started" style="background-color: #B81229;">Get Started</a>
+               </div>
+            <br>
+            </section>
+                    
+            <footer>
+                <p style="font-weight: 100; color: white;">Freemath (c) <br><br>
+                    <a href="#" style="text-decoration: none; color: inherit">Home</a> -
+                    <a href="#" style="text-decoration: none; color: inherit">Children</a> -
+                    <a href="#" style="text-decoration: none; color: inherit">Teens</a> -
+                    <a href="#" style="text-decoration: none; color: inherit">Adults</a>
+                </p>
+            </footer>
+         </div>
+      </main>
+   </body>
+</html>

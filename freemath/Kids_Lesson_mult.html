@@ -1,0 +1,687 @@
+<html>
+    <title>FreeMath.</title>
+    
+    <style>
+        
+    /* #B81229 -->dark red  #4d4557 -->dark  #29abe2 -->blue  #fbb03b -->yellow #04b59d -->green*/
+        
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            font-family: 'Quicksand', monospace;
+            background-color: whitesmoke;
+            overflow-x: hidden;
+        }
+    
+    /* header ******************************************************/
+        
+        .nav {
+            background-color: #fbb03b; /* nav text color below */
+            display: flex;
+            width: 100%;
+/*            overflow: hidden;*/ /* or else fixed menu's dropdown doesnt show */
+            font-size: 16px;
+            /* if font change, mind the padding for h1 and .nav a */
+            position: fixed;
+            z-index: 5;
+            box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            margin: 0px;
+            padding: 2px 30px 0px;
+            text-align: center;
+        }
+        
+        h1 a:hover {
+            background-color: rgba(0,0,0,0) !important;
+            color: white !important;
+        }
+        
+        .nav a, .dropdown .drop {
+            font-size: inherit;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            color: white;               /* NAV TEXT COLOR HERE */
+            padding: 16px 16px 10px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+            transition: 0.5s;
+        }
+        
+        .nav a:hover, .dropdown:hover .drop {
+            background-color: white;               /* NAV-HOVER COLOR HERE */
+            color: black;
+        }
+        
+        .drop-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+
+        .drop-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .drop-content a:hover {
+            background-color: #cccccc;
+        }
+
+        .dropdown:hover .drop-content {
+            display: block;
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 100px;
+            left: 15px;
+            background-color: #fbb03b;
+            width: 200px;
+            border-radius: 5px;
+            height: auto;
+            overflow: hidden;
+            height: 700px;
+        }
+
+        .sidebar a, .drop2 {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 16px;
+            color: white;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .sidebar a:hover, .drop2:hover  {
+            display: block;
+            color: black;
+            text-decoration: none;
+            transition: 0.5s;
+            max-width: 100%;
+            background-color: white;
+        }
+
+        /* active dropdown button, pulled by javascript */
+        .active {
+            display: block;
+            color: black;
+            text-decoration: none;
+            transition: 0.5s;
+            max-width: 100%;
+            background-color: white;
+        }
+
+        .dropdown-content2 {
+            display: none;
+            background-color: #fbbf3b;
+            text-indent: 8px;
+        }
+        
+        
+        /* CONTENT **************************************************/
+
+        .content {
+            display: inline-block;
+            position: relative;
+            margin: 80px 30px 50px 280px;
+            align-content: center;
+            top: 25px;
+            right: 30px;
+            bottom: 50px;
+            left: 25px;
+            width: 80%;
+        }
+        
+        .contains {
+            position: relative;
+            margin: 0px;
+            display: block;
+            height: inherit;
+            width: inherit;
+        }
+                
+        h2 {
+            margin: auto;
+            font-size: 30px;
+        }
+        
+        .instruction {
+            position: relative;
+            width: 100%;
+            height: auto;
+            font-size: 25px;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .adjust {
+            display: inline-flex;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .bordercol {
+            display: inline-flex;
+            width: 100%;
+            justify-content: center;
+            --borderWidth: 5px;
+            background-color: whitesmoke;
+            position: relative;
+            border-radius: var(--borderWidth);
+        }
+
+        .bordercol:after {
+            content: '';
+            position: absolute;
+            top: calc(-1 * var(--borderWidth));
+            left: calc(-1 * var(--borderWidth));
+            height: calc(100% + var(--borderWidth) * 2);
+            width: calc(100% + var(--borderWidth) * 2);
+            background: linear-gradient(60deg, #29abe2, #fbb03b, #B8214B, #04b59d);
+            border-radius: calc(2 * var(--borderWidth));
+            z-index: -1; /* below white */
+            animation: bordermove 3s infinite;
+            background-size: 300% 300%; /* bigger, move in */
+        }
+        
+        .circle {
+            position: relative;
+            background-color: #29abe2;
+            margin: 5px;
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            display: inline-flex;
+            top: 30px;
+            transition: 0.5s;
+        }
+        
+        .circle:hover {
+            background-color: #5AC5F2;
+            width: 80px;
+            height: 80px;
+        }
+        
+        .circle2 {
+            position: relative;
+            background-color: #B81229;
+            margin: 5px;
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            display: inline-flex;
+            top: 30px;
+            transition: 0.5s;
+        }
+        
+        .circle2:hover {
+            background-color: #DE142C;
+            width: 80px;
+            height: 80px;
+        }
+        
+        .circle3 {
+            position: relative;
+            background-color: #7E20B0;
+            margin: 5px;
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            display: inline-flex;
+            top: 30px;
+            transition: 0.5s;
+        }
+        
+        .circle3:hover {
+            background-color: #9B43E4;
+            width: 80px;
+            height: 80px;
+        }
+        
+        .input {
+            position: relative;
+            top: 10px;
+            height: 50px;
+            margin: 50px;
+            width: 70px;
+            font-size: 20px;
+            font-family: 'Quicksand', sans-serif;
+            text-align: center;
+        }
+        
+        /* Cards ******************************************/
+        
+        .container {
+            position: relative;
+            margin: 20px;
+            width: 500px;
+            height: 400px;
+            perspective: 1000px;
+        }
+
+        .card {
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .front, .back {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+            border-radius: 5px;
+            width: 100%;
+            padding: 50px 0px;
+            height: 200px;
+        }
+
+        .front {
+            border: 2px solid black;
+            background-color: orange;;
+        }
+
+        .front:hover {
+            box-shadow: 0px 0px 24px 0px #fbb03b;
+        }
+
+        .back {
+            border: 2px solid black;
+            transform: rotateY(180deg);
+            background-color: red;
+        }
+        
+/*        GO TO QUIZ **************************************/
+        
+        .goto {
+            position: relative;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .go-practice {
+            position: relative; /* pay attention, float: right is there */
+/*            margin-bottom: 20px;*/
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: white;
+            background-color: #fbb03b;
+            border-radius: 100px;
+            box-shadow: 0px 0px 24px 0px rgba(251, 176, 59, .64);
+            transition: all 0.3s ease-in-out 0s;
+            cursor: pointer;
+            outline: none;
+            padding: 20px 60px;
+            text-decoration: none;
+            float: right;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .go-practice:hover{
+            color: black;
+            background-color: #fcc469;
+            box-shadow: 0px 0px 24px 10px rgba(251, 176, 59, .64);
+        }
+
+        .go-practice::after {
+            content: '';
+            width: 30px;
+            height: 30px;
+            border-radius: 100px;
+            border: 6px solid #fbb03b;
+            position: absolute;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ring 1.5s infinite;
+        }
+        .go-practice:hover::after {
+            animation: none;
+            display: none;
+        }
+        
+        /*        ANIMATIONS *****************************************/
+        
+        @keyframes bordermove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        @keyframes ring {
+            from {
+                width: 30px;
+                height: 10px;
+                opacity: 1;
+            }
+            to {
+                width: 350px;
+                height: 150px;
+                opacity: 0;
+            }
+        }
+        
+        /****************************************************/
+        
+        footer {
+            width: 100%;
+            height: 40px;
+            position: relative;
+            bottom: 0px;
+        }
+        
+        /* TO COMMENT OUT LATER */
+/*
+        .content {
+            border: 2px solid;
+        }
+        .contains {
+            border: 2px solid red;
+        }
+        .instruction {
+            border: 2px solid aqua;
+        }
+*/
+        
+    </style>
+      
+    <body>
+        <head>
+            
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            
+            <div class="nav">
+                <h1><a href="Home.html">FreeMath</a></h1>
+                <a href="Home.html">Home</a>
+                <div class="dropdown">
+                    <button class="drop">Children <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="drop-content">
+                      <a href="Kids_SubChoice.html">All Subjects</a>
+                      <a href="Kids_Quiz.html">Quiz</a>
+                    </div>
+                </div> 
+                <div class="dropdown">
+                    <button class="drop">Teens <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="drop-content">
+                      <a href="Teens_SubChoice.html">All Subjects</a>
+                      <a href="Teens_Quiz.html">Quiz</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="drop">Adults <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="drop-content">
+                      <a href="Adults_SubChoice.html">All Subjects</a>
+                      <a href="Adults_Quiz.html">Quiz</a>
+                    </div>
+                </div>
+            </div>
+        </head>
+        
+        <div class="sidebar">
+            <br>
+            <a href="Home.html">Home</a>
+            <button class="drop2">Children 
+                <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
+            </button>
+            <div class="dropdown-content2">
+                <a href="Kids_SubChoice.html">All Subjects</a>
+                      <a href="Kids_Lesson_add.html">Addition</a>
+                      <a href="Kids_Lesson_sub.html">Subtraction</a>
+                      <a href="Kids_Lesson_mult.html">Multiplication</a>
+                      <a href="Kids_Lesson_div.html">Division</a>
+                      <a href="Kids_Quiz.html">Quiz</a>
+            </div>
+            <button class="drop2">Teens 
+                <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
+            </button>
+            <div class="dropdown-content2">
+                <a href="Teens_SubChoice.html">All Subjects</a>
+
+                      <a href="Teens_Lesson_alg.html">Algebra</a>
+                      <a href="Teens_Lesson_fact.html">Factorization</a>
+                      <a href="Teens_Lesson_neg.html">Negative Numbers</a>
+                      <a href="Teens_Quiz.html">Quiz</a>
+            </div>
+            <button class="drop2">Adults 
+                <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
+            </button>
+            <div class="dropdown-content2">
+                <a href="Adults_SubChoice.html">All Subjects</a>
+                      <a href="Adults_SubChoice.html">Calculus</a>
+                      <a href="Adults_Lesson_lim.html">Limits</a>
+                      <a href="Adults_SubChoice.html">Derivatives</a>
+                      <a href="Adults_Quiz.html">Quiz</a>
+            </div>
+            <br>
+        </div>
+        
+<!--
+        - All lesson inside instruction div
+        - h2 tag is lesson title
+        - all divs with adjust class makes content lay horizontally (flex)
+        - circletainer is to contain elements inside adjust, if need change display setting       inside (ex. the circles flex inside their own box, not the "adjust div")
+        - p style are changed directly in html, keep styling consistent
+        - adding bordelcol class gives it the animated border
+-->
+        
+        <div class="content">
+            <div class="contains">
+                <h2>Multiplication</h2>
+                <hr style="border: 3px solid orange; border-radius: 5px;">
+                <br>
+                <div class="instruction">
+                    <p style="font-size: 20px; margin: 0px">... is adding numbers to themselves a specific number of times!</p>
+                    <br>
+                    <div class="adjust">
+                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/RNxwasijbAo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <br>
+                    <br>
+                    <hr style="border: 1px dashed orange">
+                    <p>Count how many circles there are and multiply them by the number.</p>
+                    <p style="font-size: 20px; margin: 0px">Hint: here think of the number of circles as a group, multiplying by 2 means having two groups of these circles</p>
+                    <div class="adjust">
+                        <div class="circletainer">
+                            <div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div>
+                        </div>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">x</p>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">2</p>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">=</p>
+                        <div class="circletainer">
+                            <div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div>
+                        </div>
+                    </div>
+                    
+                    <p>As numbers:</p>
+                    <div class="adjust bordercol">
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 50px">4</p>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 50px">x</p>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 50px">2</p>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 50px">=</p>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 50px">8</p>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <hr style="border: 1px dashed orange">
+                    <p>Try it yourself:</p>
+                    <div class="adjust">
+                        <div class="circletainer">
+                            <div class="circle"></div><div class="circle"></div><div class="circle"></div>
+                        </div>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">x</p>
+                        <div class="circletainer">
+                            <div class="circle2"></div><div class="circle2"></div><div class="circle2"></div><div class="circle2"></div>
+                        </div>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">=</p>
+                        <div class="circletainer">
+                            <div class="circle3"></div><div class="circle3"></div><div class="circle3"></div><div class="circle3"></div><div class="circle3"></div><div class="circle3"></div><div class="circle3"></div><div class="circle3"></div><div class="circle3"></div><div class="circle3"></div><div class="circle3"></div><div class="circle3"></div>
+                        </div>
+                    </div>
+                    <div class="adjust">
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">3</p>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">x</p>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">4</p>
+                        <p style="font-weight: 300; font-size: 50px; padding: 0px 30px">=</p>
+                        <input class="input" id="answer" oninput="getAns()" style="border: solid; border-radius: 5px">
+                    </div>
+                    <div class="adjust" style="margin: 0px 0px 20px 0px">
+                        <p id="ans" style="margin: 0px"></p>
+                    </div>
+                    <hr style="border: 1px dashed orange">
+                    <br>
+                    
+                    <p>Flip the card with the correct answer:</p>
+                    <div class="adjust">
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">10</p>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">x</p>
+                        <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">7</p>
+                        <p style="font-weight: 300; font-size: 50px; padding: 0px 30px">=</p>
+                        <input class="input" value="&#63" style="border: solid; border-radius: 5px">
+                    </div>
+                    
+                    <div class="adjust">
+                        <div class="container">
+                            <div class="card" onclick="flip(event)">
+                              <div class="front">
+                                <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">17</p>
+                                <p> Click to flip!</p>
+                              </div>
+                              <div class="back">
+                                <h2>Wrong</h2>
+                                <p> Try again...</p>
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="card"  onclick="flip(event)">
+                              <div class="front">
+                                <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">45</p>
+                                <p> Click to flip!</p>
+                              </div>
+                              <div class="back">
+                                <h2>Wrong</h2>
+                                <p> Try again...</p>
+                              </div>
+                            </div>
+                         </div>
+
+                         <div class="container">
+                            <div class="card" onclick="flip(event)">
+                              <div class="front">
+                                <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">70</p>
+                                <p> Click to flip!</p>
+                              </div>
+                              <div class="back" style="background-color: green;">
+                                <h2>Correct</h2>
+                                <p> Nice Job!</p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- outside instruction div here -->
+                <div class="goto">
+                    <a href="Kids_Lesson_div.html" class="go-practice" style="text-decoration: none;"> Next Lesson </a>
+                </div>
+                <br>
+                <br>
+                </div>
+            
+            </div>
+        </div>
+        
+        <footer>
+            
+        </footer>
+        
+<!-- JAVASCRIPT --------------------------------------------------->
+    
+        <script>
+            /* Correct answer */
+            function getAns() {
+
+                var validation;
+
+                var x = document.getElementById("answer");
+
+                if (x.value == "12") {
+                    validation = "Nice Job!";
+                    x.style.borderColor = "green";
+                }
+                else{
+                    validation = "Try Again...";
+                    x.style.borderColor = "red";
+                }
+
+                document.getElementById("ans").innerHTML = validation;
+            }
+
+            function flip(event){
+
+                var element = event.currentTarget;
+
+                if (element.className === "card") {
+
+                    if(element.style.transform == "rotateY(180deg)") {
+
+                        element.style.transform = "rotateY(0deg)";
+                }
+                else {
+                  element.style.transform = "rotateY(180deg)";
+                }
+              }
+            };
+
+            /* Dropdown */
+            var dropdown = document.getElementsByClassName("drop2");
+            var i;
+
+            for (i = 0; i < dropdown.length; i++) {
+              dropdown[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var dropdownContent = this.nextElementSibling;
+              if (dropdownContent.style.display === "block") {
+              dropdownContent.style.display = "none";
+              } else {
+              dropdownContent.style.display = "block";
+              }
+              });
+            }
+        </script>
+    </body>
+</html>
