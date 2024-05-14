@@ -124,6 +124,7 @@
             align-items: center;
             justify-content: center;
             color: black;
+            margin: auto 50px;
         }
 
         .parallax::after {
@@ -193,30 +194,12 @@
             margin-top: 200px;
         }
 
-        .kids {
-            margin-left: 30px;
+        .kids, .teens, .adults {
+            margin: auto 45px;
             height: 335px;
             padding: 60px 30px 0px;
             background-color: rgba(255,255,255,0.8);
             border: 2px solid #fbb03b;
-            width: 100%;
-        }
-
-        .teens {
-            margin-right: auto;
-            height: 335px;
-            padding: 60px 30px 0px;
-            background-color: rgba(255,255,255,0.8);
-            border: 2px solid #04b59d;
-            width: 100%;
-        }
-
-        .adults {
-            margin-left: auto;
-            height: 335px;
-            padding: 60px 30px 0px;
-            background-color: rgba(255,255,255,0.8);
-            border: 2px solid #B81229;
             width: 100%;
         }
 
@@ -238,7 +221,7 @@
             border-radius: 5px;
         }
           
-        .kids h2 {
+        .kids h2, .adults h2 {
             background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #fbb03b 50%);
             background-position: -0%;
             background-size: 200% auto;
@@ -246,18 +229,11 @@
             text-decoration: none;
             transition: 0.5s;  
         }
+        .adults h2 {
+            background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #B81229 50%);}
           
         .teens h2 {
             background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #04b59d 50%);
-            background-position: -0%;
-            background-size: 200% auto;
-            color: #222;
-            text-decoration: none;
-            transition: 0.5s;  
-        }
-          
-        .adults h2 {
-            background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #B81229 50%);
             background-position: -0%;
             background-size: 200% auto;
             color: #222;
@@ -371,10 +347,9 @@
          </section>
           
          <div class="ages">
-             
             <section class="section parallax bg2">
-                <img src="images/Kids.jpg" style="height:400px; width: auto; margin-left: 45px; box-shadow: 20px 20px 25px grey;">
-                <div class="kids">
+                <img src="images/Kids.jpg" style="height:400px; width: auto; box-shadow: 20px 20px 25px grey;">
+                <div class="kids" style="border: 2px solid #fbb03b;">
                     <h2>Children</h2>
                     <p class="p4"> Hello there! Welcome to FreeMath! In this section, you will learn about:<br> Addition, Subtraction, Multiplication, and Division! </p>
                     <br>
@@ -383,18 +358,18 @@
             </section>
             
             <section class="section parallax bg3">
-                <div class="teens">
+                <div class="teens" style="border: 2px solid #04b59d">
                     <h2>Teens</h2>
                     <p class="p4"> Hi there! Welcome to FreeMath! In this section, you will learn about:<br> Negative Numbers, Functions, Algebra, and Factorization! </p>
                     <br>
                     <a href="Teens_SubChoice.html" class="get_started" style="background-color: #04b59d;">Get Started</a>
                </div>
-               <img src="images/Teens.jpg" style="height:400px; width: auto; margin-left: 45px; box-shadow: 20px 20px 25px grey;">
+               <img src="images/Teens.jpg" style="height:400px; width: auto; box-shadow: 20px 20px 25px grey;">
             </section>
             
             <section class="section parallax bg5">
-                <img src="images/Adults.jpg" style="height:400px; width: auto; margin-right: 45px; box-shadow: 20px 20px 25px grey;">
-                <div class="adults">
+                <img src="images/Adults.jpg" style="height:400px; width: auto; box-shadow: 20px 20px 25px grey;">
+                <div class="adults" style="border: 2px solid #B81229;">
                     <h2>Adults</h2>
                     <p class="p4"> Welcome to FreeMath! In this section, you will learn about:<br> Calculus, Limits, and Derivatives! </p>
                     <br>
