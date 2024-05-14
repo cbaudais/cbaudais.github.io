@@ -4,7 +4,7 @@ Host for all websites I've coded or created, mostly school assignements. Images 
 
 [cbaudais.github.io](https://cbaudais.github.io/)
 - **Portfolio:** <a href="https://christinabaudais.com/" target="_blank" rel="noopener noreferrer">christinabaudais.com</a>
-    - Personal portfolio website, made using a static site generator (SSG) called Eleventy (11ty); coded in Nunjucks, Javascript, HTML etc.
+    - Personal portfolio website, made using static site generator (SSG) Eleventy (11ty); coded in Nunjucks, Javascript, HTML etc.
 - **Sciences Mag Junior _(professional work)_:** <a href="https://lalibertesciencesmagjunior.ca/" target="_blank" rel="noopener noreferrer">lalibertesciencesmagjunior.ca</a>
     - Made in Wordpress. Done as summer job in 2021.
 - **Webstore. _(IMD1005_Web_Dev) Assignement 2_:** <a href="https://cbaudais.github.io/webstore/index.html" target="_blank" rel="noopener noreferrer">cbaudais/github.io/webstore</a>
