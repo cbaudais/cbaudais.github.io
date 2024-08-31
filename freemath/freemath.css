@@ -1,0 +1,489 @@
+/* #B81229 DE142C -->dark red  var(--main) 716A79 -->dark  #29abe2 -->blue  var(--kids) fbbf3b -->yellow #04b59d 66cdaa -->green*/
+:root {
+    --main: #4d4557;
+    --mainPale: #716A79;
+    --kids: #fbb03b;
+    --kidsPale: #fbbf3b;
+    --teens: #04b59d;
+    --teensPale: #66cdaa;
+    --adults: #B81229;
+    --adultsPale: #DE142C;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    font-family: 'Quicksand', monospace;
+    background-color: whitesmoke;
+    overflow-x: hidden;
+}
+
+/* header ******************************************************/
+.nav {
+    background-color: var(--mainPale);
+    /* nav text color below */
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin: 0px;
+    padding: 2px 30px 0px;
+    text-align: center;
+}
+
+h1 a:hover {
+    background-color: rgba(0, 0, 0, 0) !important;
+    color: white !important;
+}
+
+.nav a,
+.dropdown .drop {
+    font-size: inherit;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    color: white;
+    /* NAV TEXT COLOR HERE */
+    padding: 16px 16px 10px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    transition: 0.5s;
+}
+
+.nav a:hover,
+.dropdown:hover .drop {
+    background-color: white;
+    /* NAV-HOVER COLOR HERE */
+    color: black;
+}
+
+.drop-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+.dropdown:hover .drop-content {
+    display: block;
+}
+
+.drop-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.drop-content a:hover {
+    background-color: #cccccc;
+}
+
+.sidebar {
+    position: fixed;
+    align-self: center;
+    top: 80px;
+    left: 15px;
+    background-color: var(--main);
+    width: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 80vh;
+    padding: 25px 0px;
+}
+
+.sidebar a,
+.drop2 {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+.sidebar a:hover,
+.drop2:hover {
+    display: block;
+    color: black;
+    text-decoration: none;
+    transition: 0.5s;
+    max-width: 100%;
+    background-color: white;
+}
+
+/* active dropdown button, pulled by javascript */
+.active {
+    display: block;
+    color: black;
+    text-decoration: none;
+    transition: 0.5s;
+    max-width: 100%;
+    background-color: white;
+}
+
+.dropdown-content2 {
+    display: none;
+    background-color: var(--mainPale);
+    text-indent: 8px;
+}
+
+/*FLIP BOXES*******************************/
+
+.cube {
+    color: #ccc;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.85s cubic-bezier(0.17, 0.67, 0.14, 0.93);
+    transform-style: preserve-3d;
+    transform-origin: 100% 50%;
+    width: 8em;
+    height: 4em;
+}
+
+/*Flip on hover*/
+.cube:hover {
+    transform: rotateX(-90deg);
+}
+
+/*dimension of box*/
+.side {
+    box-sizing: border-box;
+    position: absolute;
+    display: inline-block;
+    height: 4em;
+    width: 6.5em;
+    text-align: center;
+    padding-top: 1.5em;
+    border-radius: 5px;
+}
+
+.top {
+    background: #04b59d;
+    font-size: 40px;
+    box-shadow: 5px 15px 25px #888888;
+    transform: rotateX(90deg) translate3d(0, 0, 2em);
+}
+
+.front {
+    background: white;
+    color: #04b59d;
+    font-size: 40px;
+    box-shadow: 5px 12px 20px #888888;
+    transform: translate3d(0, 0, 2em);
+}
+
+#bar {
+    border: 3px solid #04b59d;
+    border-radius: 5px;
+    animation: colour 3s;
+}
+
+@keyframes colour {
+    20% {
+        border-color: #00DFFC;
+        width: 25%;
+    }
+
+    100% {
+        border-color: #04b59d;
+        width: 100%;
+    }
+}
+
+/* CONTENT **************************************************/
+
+.content {
+    /* display: inline-block; */
+    /* position: relative; */
+    margin: 80px 10vw 80px 250px;
+    align-content: center;
+    /* margin-left: 300px; */
+    font-size: 25px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.options {
+    margin-left: 15%;
+}
+
+.sub_opt {
+    text-align: center;
+    line-height: 30px;
+    font-size: 15pt;
+    padding: 36px 20px;
+    width: 200px;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-right: 100px;
+    border-radius: 10px;
+    color: whitesmoke;
+    border: solid;
+    background-color: none;
+}
+
+h2 {
+    margin: auto;
+    font-size: 30px;
+    text-align: left;
+}
+
+.adjust {
+    position: relative;
+    /* display: flex; */
+    width: 100%;
+    justify-content: center;
+}
+
+.circletainer {
+    display: inline-flex;
+}
+
+.number {
+    display: inline-flex;
+    letter-spacing: 25px;
+    font-weight: 700;
+    font-size: 50px;
+    padding: 0px 50px;
+}
+
+.bordercol {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    --borderWidth: 5px;
+    background-color: whitesmoke;
+    position: relative;
+    border-radius: var(--borderWidth);
+    margin: 80px auto;
+}
+
+.bordercol:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg, #29abe2, var(--main), #B8214B, #04b59d);
+    border-radius: calc(2 * var(--borderWidth));
+    z-index: -1;
+    /* below white */
+    animation: bordermove 3s infinite;
+    background-size: 300% 300%;
+    /* bigger, move in */
+}
+
+.circle {
+    position: relative;
+    background-color: #29abe2;
+    margin: 5px;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    display: inline-flex;
+    top: 30px;
+    transition: 0.5s;
+}
+
+.circle:hover {
+    background-color: #5AC5F2;
+    width: 80px;
+    height: 80px;
+}
+
+.circle2 {
+    position: relative;
+    background-color: #B81229;
+    margin: 5px;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    display: inline-flex;
+    top: 30px;
+    transition: 0.5s;
+}
+
+.circle2:hover {
+    background-color: #DE142C;
+    width: 80px;
+    height: 80px;
+}
+
+.input {
+    position: relative;
+    top: -10px;
+    height: 50px;
+    margin: 50px;
+    width: 70px;
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+}
+
+/* Cards ******************************************/
+
+.card-container {
+    display: inline-flex;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.front,
+.back {
+    border: 2px solid black;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    border-radius: 5px;
+}
+
+.front .number,
+.back .number {
+    font-weight: 700;
+    font-size: 50px;
+    letter-spacing: normal;
+    margin: 0;
+}
+
+.front {
+    transform: rotate(0deg);
+    background-color: orange;
+    ;
+}
+
+.front:hover {
+    box-shadow: 0px 0px 24px 0px var(--main);
+}
+
+.back {
+    transform: rotateY(180deg);
+    background-color: red;
+}
+
+/*        GO TO QUIZ **************************************/
+
+.go {
+    position: relative;
+    right: 100px;
+    bottom: 0;
+    /* bottom: 20px; */
+    /* pay attention, float: right is there */
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+    background-color: var(--main);
+    border-radius: 100px;
+    box-shadow: 0px 0px 24px 0px rgba(251, 176, 59, .64);
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    padding: 20px 60px;
+    text-decoration: none;
+    float: right;
+    display: inline-block;
+    text-align: center;
+}
+
+.go:hover {
+    color: black;
+    background-color: #fcc469;
+    box-shadow: 0px 0px 24px 10px rgba(251, 176, 59, .64);
+}
+
+.go::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    border: 6px solid var(--main);
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+}
+
+.go:hover::after {
+    animation: none;
+    display: none;
+}
+
+/*        ANIMATIONS *****************************************/
+
+@keyframes bordermove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes ring {
+    from {
+        width: 30px;
+        height: 10px;
+        opacity: 1;
+    }
+
+    to {
+        width: 350px;
+        height: 150px;
+        opacity: 0;
+    }
+}
+
+/****************************************************/
+
+footer {
+    /* position: relative;
+    display: block; */
+    width: 100%;
+    height: 120px;
+    bottom: 0;
+}

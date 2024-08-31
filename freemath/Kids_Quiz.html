@@ -1,507 +1,529 @@
-  <html>
-    <title>FreeMath.</title>
-    
-    <style>
-   
-        
-        
-    /* #B8214B -->dark red  #4d4557 -->dark  #29abe2 -->blue  #fbb03b -->yellow #04b59d -->green*/
-        
-        body {
-            width: 100%;
-            height: 100%;
-            margin: 0px;
-            font-family: 'Quicksand', monospace;
-            background-color: whitesmoke;
-            overflow-x: hidden;
-        }
-    
+<html>
+<title>FreeMath.</title>
+
+<style>
+    /* #B8214B -->dark red  #4d4557 -->dark  #29abe2 -->blue  var(--kids) -->yellow #04b59d -->green*/
+
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        font-family: 'Quicksand', monospace;
+        background-color: whitesmoke;
+        overflow-x: hidden;
+    }
+
     /* header ******************************************************/
-        
-        .nav {
-            background-color: #fbb03b; /* nav text color below */
-            display: flex;
-            width: 100%;
-/*            overflow: hidden;*/ /* or else fixed menu's dropdown doesnt show */
-            font-size: 16px;
-            /* if font change, mind the padding for h1 and .nav a */
-            position: fixed;
-            z-index: 5;
-            box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.2);
+
+    .nav {
+        background-color: var(--kids);
+        /* nav text color below */
+        display: flex;
+        width: 100%;
+        /*            overflow: hidden;*/
+        /* or else fixed menu's dropdown doesnt show */
+        font-size: 16px;
+        /* if font change, mind the padding for h1 and .nav a */
+        position: fixed;
+        z-index: 5;
+        box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        margin: 0px;
+        padding: 2px 30px 0px;
+        text-align: center;
+    }
+
+    h1 a:hover {
+        background-color: rgba(0, 0, 0, 0) !important;
+        color: white !important;
+    }
+
+    .nav a,
+    .dropdown .drop {
+        font-size: inherit;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        color: white;
+        /* NAV TEXT COLOR HERE */
+        padding: 16px 16px 10px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+        transition: 0.5s;
+    }
+
+    .nav a:hover,
+    .dropdown:hover .drop {
+        background-color: white;
+        /* NAV-HOVER COLOR HERE */
+        color: black;
+    }
+
+    .drop-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 5;
+    }
+
+    .drop-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .drop-content a:hover {
+        background-color: #cccccc;
+    }
+
+    .dropdown:hover .drop-content {
+        display: block;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 100px;
+        left: 15px;
+        background-color: var(--kids);
+        width: 200px;
+        border-radius: 5px;
+        height: auto;
+        overflow: hidden;
+        height: 700px;
+    }
+
+    .sidebar a,
+    .drop2 {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        color: white;
+        display: block;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .sidebar a:hover,
+    .drop2:hover {
+        display: block;
+        color: black;
+        text-decoration: none;
+        transition: 0.5s;
+        max-width: 100%;
+        background-color: white;
+    }
+
+    /* active dropdown button, pulled by javascript */
+    .active {
+        display: block;
+        color: black;
+        text-decoration: none;
+        transition: 0.5s;
+        max-width: 100%;
+        background-color: white;
+    }
+
+    .dropdown-content2 {
+        display: none;
+        background-color: #fbbf3b;
+        text-indent: 8px;
+    }
+
+
+    /* CONTENT **************************************************/
+
+    .content {
+        display: inline-block;
+        position: relative;
+        margin: 80px 30px 50px 280px;
+        align-content: center;
+        top: 25px;
+        right: 30px;
+        bottom: 50px;
+        left: 25px;
+        width: 80%;
+    }
+
+    .contains {
+        position: relative;
+        margin: 0px;
+        display: block;
+        height: inherit;
+        width: inherit;
+    }
+
+    .mySlides {
+        position: relative;
+        display: none;
+        vertical-align: middle;
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+
+    /* Slideshow container contains pagination */
+    .slideshow-container {
+        max-width: 1000px;
+        height: 500px;
+        position: relative;
+        margin: auto;
+        /*            border: 2px solid orange;*/
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: #B81229;
+        font-weight: bold;
+        font-size: 25px;
+        transition: 0.5s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+        animation: rightbouncy 5s;
+        animation-iteration-count: 3;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        left: auto;
+        color: white;
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+
+        .prev,
+        .next,
+        .text {
+            font-size: 11px
         }
-        
-        h1 {
-            margin: 0px;
-            padding: 2px 30px 0px;
-            text-align: center;
-        }
-        
-        h1 a:hover {
-            background-color: rgba(0,0,0,0) !important;
-            color: white !important;
-        }
-        
-        .nav a, .dropdown .drop {
-            font-size: inherit;
-            text-align: center;
-            text-decoration: none;
-            border: none;
-            outline: none;
-            color: white;               /* NAV TEXT COLOR HERE */
-            padding: 16px 16px 10px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-            transition: 0.5s;
-        }
-        
-        .nav a:hover, .dropdown:hover .drop {
-            background-color: white;               /* NAV-HOVER COLOR HERE */
-            color: black;
-        }
-        
-        .drop-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 5;
+    }
+
+    /*Questions*/
+    .question_container {
+        position: relative;
+        /*            border: 1px solid aqua;*/
+        /*            padding-top:10%;*/
+    }
+
+    img {
+        position: relative;
+        display: inline-flex;
+    }
+
+    /* the output scores*/
+    input[type=text] {
+        width: 10%;
+        border: none;
+        background-color: white;
+        color: black;
+        text-align: center;
+    }
+
+    /* The container */
+    .container {
+        display: inline-block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        user-select: none;
+    }
+
+    /* Hide default  button */
+    .container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+        border: 1px solid #29abe2;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input~.checkmark {
+        height: 26px;
+        width: 26px;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .container input:checked~.checkmark {
+        background-color: #29abe2;
+        box-shadow: inset 0 0 10px white;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .container input:checked~.checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .container .checkmark:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+
+    }
+
+    .result {
+        border: none;
+        background-color: var(--kids);
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        animation: topbouncy 5s infinite linear;
+        position: relative;
+        margin: 0px 5px;
+    }
+
+    .result:hover {
+        background-color: #fcc469;
+    }
+
+    /*        GO TO LESSON **************************************/
+
+    .goto {
+        position: relative;
+        margin: 0px;
+        /*            top: 80px;*/
+        /*            right: 20px;*/
+        text-align: center;
+    }
+
+    .go-practice {
+        position: relative;
+        /* pay attention, float: right is there */
+        /*            margin-bottom: 20px;*/
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: white;
+        background-color: var(--kids);
+        border-radius: 100px;
+        box-shadow: 0px 0px 24px 0px rgba(251, 176, 59, .64);
+        transition: all 0.3s ease-in-out 0s;
+        cursor: pointer;
+        outline: none;
+        padding: 20px 60px;
+        text-decoration: none;
+        /*            float: right;*/
+        display: inline-block;
+        text-align: center;
+    }
+
+    .go-practice:hover {
+        color: black;
+        background-color: #fcc469;
+        box-shadow: 0px 0px 24px 10px rgba(251, 176, 59, .64);
+    }
+
+    .go-practice::after {
+        content: '';
+        width: 30px;
+        height: 30px;
+        border-radius: 100px;
+        border: 6px solid var(--kids);
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: ring 1.5s infinite;
+    }
+
+    .go-practice:hover::after {
+        animation: none;
+        display: none;
+    }
+
+
+    .get_started {
+        background-color: #fbbf3b;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        position: relative;
+        display: inline-block;
+        text-align: center;
+        padding: 20px 5px;
+        font-size: 16px;
+        width: 150px;
+        /* need fixed width for later text-indent, the hover stuff */
+        overflow: hidden;
+        transition: all 0.2s linear 0s;
+    }
+
+    .get_started:after {
+        content: "→";
+        /* ouuuuu smart! */
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: -30px;
+        width: 30px;
+        height: 100%;
+        background-color: rgba(77, 69, 87, 0.2);
+        border-radius: 0px 6px 6px 0px;
+        transition: all 0.2s linear 0s;
+        text-align: center;
+    }
+
+    .get_started:hover {
+        text-indent: -30px;
+        /* push to left */
+    }
+
+    .get_started:hover:after {
+        right: 0;
+        text-indent: 0px;
+    }
+
+    /*        ANIMATIONS *****************************************/
+
+    @keyframes ring {
+        from {
+            width: 80px;
+            height: 10px;
+            opacity: 1;
         }
 
-        .drop-content a {
-            float: none;
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .drop-content a:hover {
-            background-color: #cccccc;
-        }
-
-        .dropdown:hover .drop-content {
-            display: block;
-        }
-        
-        .sidebar {
-            position: fixed;
-            top: 100px;
-            left: 15px;
-            background-color: #fbb03b;
-            width: 200px;
-            border-radius: 5px;
-            height: auto;
-            overflow: hidden;
-            height: 700px;
-        }
-
-        .sidebar a, .drop2 {
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 16px;
-            color: white;
-            display: block;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .sidebar a:hover, .drop2:hover  {
-            display: block;
-            color: black;
-            text-decoration: none;
-            transition: 0.5s;
-            max-width: 100%;
-            background-color: white;
-        }
-
-        /* active dropdown button, pulled by javascript */
-        .active {
-            display: block;
-            color: black;
-            text-decoration: none;
-            transition: 0.5s;
-            max-width: 100%;
-            background-color: white;
-        }
-
-        .dropdown-content2 {
-            display: none;
-            background-color: #fbbf3b;
-            text-indent: 8px;
-        }
-        
-        
-        /* CONTENT **************************************************/
-
-        .content {
-            display: inline-block;
-            position: relative;
-            margin: 80px 30px 50px 280px;
-            align-content: center;
-            top: 25px;
-            right: 30px;
-            bottom: 50px;
-            left: 25px;
-            width: 80%;
-        }
-        
-        .contains {
-            position: relative;
-            margin: 0px;
-            display: block;
-            height: inherit;
-            width: inherit;
-        }
-        
-        .mySlides {
-            position: relative;
-            display: none;
-            vertical-align: middle;
-            width: 100%;
-            height: auto;
-            text-align:center;
-        }
-        
-        /* Slideshow container contains pagination */
-        .slideshow-container {
-            max-width: 1000px;
-            height: 500px;
-            position: relative;
-            margin: auto;
-/*            border: 2px solid orange;*/
-        }
-        
-        /* Next & previous buttons */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: #B81229;
-            font-weight: bold;
-            font-size: 25px;
-            transition: 0.5s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
-        
-        /* Position the "next button" to the right */
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-            animation: rightbouncy 5s;
-            animation-iteration-count: 3;
-        }
-        
-        /* On hover, add a black background color with a little bit see-through */
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.5);
-            left:auto;
-            color: white;
-        }
-        
-        /* On smaller screens, decrease text size */
-        @media only screen and (max-width: 300px) {
-            .prev, .next,.text {
-                font-size: 11px
-            }
-        }
-        
-        /*Questions*/
-        .question_container{
-            position: relative;
-/*            border: 1px solid aqua;*/
-/*            padding-top:10%;*/
-        }
-        
-        img {
-            position: relative;
-            display: inline-flex;
-        }
-        
-        /* the output scores*/
-        input[type=text] {
-            width: 10%;
-            box-sizing: ;
-            border: none;
-            background-color: white;
-            color: black;
-            text-align: center;
-        }
-        
-        /* The container */
-        .container {
-            display: inline-block;
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 12px;
-            cursor: pointer;
-            font-size: 22px;
-            user-select: none;
-        }
-        
-        /* Hide default  button */
-        .container input {
-            position: absolute;
+        to {
+            width: 300px;
+            height: 100px;
             opacity: 0;
-            cursor: pointer;
         }
-        
-        /* custom radio button */
-        .checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 25px;
-            width: 25px;
-            background-color: #eee;
-            border-radius: 50%;
-            border: 1px solid #29abe2;
-        }
-        
-        /* On mouse-over, add a grey background color */
-        .container:hover input ~ .checkmark {
-            height: 26px;
-            width: 26px;
-        }
-        
-        /* When the radio button is checked, add a blue background */
-        .container input:checked ~ .checkmark {
-            background-color: #29abe2;
-            box-shadow: inset 0 0 10px white;
-        }
-        
-        /* Create the indicator (the dot/circle - hidden when not checked) */
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-        
-        /* Show the indicator (dot/circle) when checked */
-        .container input:checked ~ .checkmark:after {
-            display: block;
-        }
-        
-        /* Style the indicator (dot/circle) */
-        .container .checkmark:after {
-            top: 9px;
-            left: 9px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: white;
-            
-        }
-        
-        .result {
-            border: none;
-            background-color: #fbb03b;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            animation: topbouncy 5s infinite linear;
-            position: relative;
-            margin: 0px 5px;
-        }
-        
-        .result:hover {
-            background-color: #fcc469;
-        }
-        
-/*        GO TO LESSON **************************************/
-        
-        .goto {
-            position: relative;
-            margin: 0px;
-/*            top: 80px;*/
-/*            right: 20px;*/
-            text-align: center;
+    }
+
+    @keyframes topbouncy {
+        0% {
+            top: 0em
         }
 
-        .go-practice {
-            position: relative; /* pay attention, float: right is there */
-/*            margin-bottom: 20px;*/
-            font-size: 16px;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: white;
-            background-color: #fbb03b;
-            border-radius: 100px;
-            box-shadow: 0px 0px 24px 0px rgba(251, 176, 59, .64);
-            transition: all 0.3s ease-in-out 0s;
-            cursor: pointer;
-            outline: none;
-            padding: 20px 60px;
-            text-decoration: none;
-/*            float: right;*/
-            display: inline-block;
-            text-align: center;
+        20% {
+            top: 0em
         }
 
-        .go-practice:hover{
-            color: black;
-            background-color: #fcc469;
-            box-shadow: 0px 0px 24px 10px rgba(251, 176, 59, .64);
+        33% {
+            top: -0.9em
         }
 
-        .go-practice::after {
-            content: '';
-            width: 30px;
-            height: 30px;
-            border-radius: 100px;
-            border: 6px solid #fbb03b;
-            position: absolute;
-            z-index: -1;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: ring 1.5s infinite;
+        46% {
+            top: 0em
         }
-        .go-practice:hover::after {
-            animation: none;
-            display: none;
+
+        50% {
+            top: -0.4em
         }
-        
-         
-        .get_started {
-            background-color: #fbbf3b;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            position: relative;
-            display: inline-block;
-            text-align: center;
-            padding: 20px 5px;
-            font-size: 16px;
-            width: 150px; /* need fixed width for later text-indent, the hover stuff */
-            overflow: hidden;
-            transition: all 0.2s linear 0s;
+
+        60% {
+            top: 0em
         }
-        
-        .get_started:after {
-            content: "→"; /* ouuuuu smart! */
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 0;
-            right: -30px;
-            width: 30px;
-            height: 100%;
-            background-color: rgba(77, 69, 87, 0.2);
-            border-radius: 0px 6px 6px 0px;
-            transition: all 0.2s linear 0s;
-            text-align: center;
+
+        100% {
+            top: 0em;
         }
-        
-         .get_started:hover {
-            text-indent: -30px;
-            /* push to left */
+    }
+
+    @keyframes rightbouncy {
+        25% {
+            right: 0em
         }
-        
-         .get_started:hover:after {
-            right: 0;
-            text-indent: 0px;
+
+        50% {
+            right: -0.9em
         }
-        
-        /*        ANIMATIONS *****************************************/
-        
-        @keyframes ring {
-            from {
-                width: 80px;
-                height: 10px;
-                opacity: 1;
-            }
-            to {
-                width: 300px;
-                height: 100px;
-                opacity: 0;
-            }
+
+        75% {
+            right: 0px;
+            font-size: 30px;
         }
-        
-        @keyframes topbouncy {
-            0% {
-                top:0em
-            }
-            20% {
-                top:0em
-            }
-            33% {
-                top:-0.9em
-            }
-            46% {
-                top:0em
-            }
-            50% {
-                top:-0.4em
-            }
-            60% {
-                top:0em
-            }
-            100% {
-                top:0em;
-            }
+
+        90% {
+            right: -0.4em
         }
-        
-        @keyframes rightbouncy {
-            25% {
-                right:0em
-            }
-            50% {
-                right:-0.9em
-            }
-            75% {
-                right:0px;
-                font-size: 30px;
-            }
-            90% {
-                right:-0.4em
-            }
-            100% {
-                right:0em;
-            }
+
+        100% {
+            right: 0em;
         }
-        
-        /****************************************************/
-        
-        footer {
-            background-color: whitesmoke;
-            width: 100%;
-            height: 40px;
-            position: fixed;
-            bottom: 0px;
-            margin: 0px;
-            padding: 0px 20px;
-        }
-        
-        .timer{
-            position: relative;
-            text-align: center;
-            margin: 10px;
-            top: 40px;
-            border: 2px solid black;
-            border-radius: 50px;
-            font-size: 20px;
-        }
-        
-        #start_quiz {
-            
-        }
-            
-        
-        /* TO COMMENT OUT LATER */
-/*
+    }
+
+    /****************************************************/
+
+    footer {
+        background-color: whitesmoke;
+        width: 100%;
+        height: 40px;
+        position: fixed;
+        bottom: 0px;
+        margin: 0px;
+        padding: 0px 20px;
+    }
+
+    .timer {
+        position: relative;
+        text-align: center;
+        margin: 10px;
+        top: 40px;
+        border: 2px solid black;
+        border-radius: 50px;
+        font-size: 20px;
+    }
+
+    #start_quiz {}
+
+
+    /* TO COMMENT OUT LATER */
+    /*
         .content {
             border: 2px solid;
         }
@@ -509,366 +531,377 @@
             border: 2px solid red;
         }
 */
-        
-    </style>
-      
-    <body>
-        <head>
-            
-            <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</style>
 
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            
-            <div class="nav">
-                <h1><a href="Home.html">FreeMath</a></h1>
-                <a href="Home.html">Home</a>
-                <div class="dropdown">
-                    <button class="drop">Children <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="drop-content">
-                      <a href="Kids_SubChoice.html">All Subjects</a>
-                      <a href="Kids_Quiz.html">Quiz</a>
-                    </div>
-                </div> 
-                <div class="dropdown">
-                    <button class="drop">Teens <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="drop-content">
-                      <a href="Teens_SubChoice.html">All Subjects</a>
-                      <a href="Teens_Quiz.html">Quiz</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="drop">Adults <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="drop-content">
-                      <a href="Adults_SubChoice.html">All Subjects</a>
-                      <a href="Adults_Quiz.html">Quiz</a>
-                    </div>
-                </div>
-            </div>
-        </head>
-        
-        <div class="sidebar">
-            <br>
+<body>
+
+    <head>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <div class="nav">
+            <h1><a href="Home.html">FreeMath</a></h1>
             <a href="Home.html">Home</a>
-            <button class="drop2">Children 
-                <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
-            </button>
-            <div class="dropdown-content2">
-                <a href="Kids_SubChoice.html">All Subjects</a>
-                      <a href="Kids_Lesson_add.html">Addition</a>
-                      <a href="Kids_Lesson_sub.html">Subtraction</a>
-                      <a href="Kids_Lesson_mult.html">Multiplication</a>
-                      <a href="Kids_Lesson_div.html">Division</a>
-                      <a href="Kids_Quiz.html">Quiz</a>
+            <div class="dropdown">
+                <button class="drop">Children <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="drop-content">
+                    <a href="Kids_SubChoice.html">All Subjects</a>
+                    <a href="Kids_Quiz.html">Quiz</a>
+                </div>
             </div>
-            <button class="drop2">Teens 
-                <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
-            </button>
-            <div class="dropdown-content2">
-                <a href="Teens_SubChoice.html">All Subjects</a>
-
-                      <a href="Teens_Lesson_alg.html">Algebra</a>
-                      <a href="Teens_Lesson_fact.html">Factorization</a>
-                      <a href="Teens_Lesson_neg.html">Negative Numbers</a>
-                      <a href="Teens_Quiz.html">Quiz</a>
+            <div class="dropdown">
+                <button class="drop">Teens <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="drop-content">
+                    <a href="Teens_SubChoice.html">All Subjects</a>
+                    <a href="Teens_Quiz.html">Quiz</a>
+                </div>
             </div>
-            <button class="drop2">Adults 
-                <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
-            </button>
-            <div class="dropdown-content2">
-                <a href="Adults_SubChoice.html">All Subjects</a>
-                      <a href="Adults_SubChoice.html">Calculus</a>
-                      <a href="Adults_Lesson_lim.html">Limits</a>
-                      <a href="Adults_SubChoice.html">Derivatives</a>
-                      <a href="Adults_Quiz.html">Quiz</a>
+            <div class="dropdown">
+                <button class="drop">Adults <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="drop-content">
+                    <a href="Adults_SubChoice.html">All Subjects</a>
+                    <a href="Adults_Quiz.html">Quiz</a>
+                </div>
             </div>
-            <br>
         </div>
-        
-<!--
-        - All lesson inside instruction div
-        - h2 tag is lesson title
-        - all divs with adjust class makes content lay horizontally (flex)
-        - circletainer is to contain elements inside adjust, if need change display setting       inside (ex. the circles flex inside their own box, not the "adjust div")
-        - p style are changed directly in html, keep styling consistent
-        - adding bordelcol class gives it the animated border
--->
-            
-        <div class="content">
-            <div class="contains">
-                <form class="quiz">
-                    <div class="slideshow-container">
-                        <div class="question_container">
-                            <div class="mySlides" style="padding: 50px 0px">
+    </head>
+
+    <div class="sidebar">
+        <br>
+        <a href="Home.html">Home</a>
+        <button class="drop2">Children
+            <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
+        </button>
+        <div class="dropdown-content2">
+            <a href="Kids_SubChoice.html">All Subjects</a>
+            <a href="Kids_Lesson_add.html">Addition</a>
+            <a href="Kids_Lesson_sub.html">Subtraction</a>
+            <a href="Kids_Lesson_mult.html">Multiplication</a>
+            <a href="Kids_Lesson_div.html">Division</a>
+            <a href="Kids_Quiz.html">Quiz</a>
+        </div>
+        <button class="drop2">Teens
+            <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
+        </button>
+        <div class="dropdown-content2">
+            <a href="Teens_SubChoice.html">All Subjects</a>
+
+            <a href="Teens_Lesson_alg.html">Algebra</a>
+            <a href="Teens_Lesson_fact.html">Factorization</a>
+            <a href="Teens_Lesson_neg.html">Negative Numbers</a>
+            <a href="Teens_Quiz.html">Quiz</a>
+        </div>
+        <button class="drop2">Adults
+            <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
+        </button>
+        <div class="dropdown-content2">
+            <a href="Adults_SubChoice.html">All Subjects</a>
+            <a href="Adults_SubChoice.html">Calculus</a>
+            <a href="Adults_Lesson_lim.html">Limits</a>
+            <a href="Adults_SubChoice.html">Derivatives</a>
+            <a href="Adults_Quiz.html">Quiz</a>
+        </div>
+        <br>
+    </div>
+
+
+    <div class="content">
+        <div class="contains">
+            <form class="quiz">
+                <div class="slideshow-container">
+                    <div class="question_container">
+                        <div class="mySlides" style="padding: 50px 0px">
                             <h2 style="font-size: 40px;">Quiz ! </h2>
                             <b>
                                 <p style="font-size: 25px;">10 questions</p>
-                                <div style="font-size: 20px;" class="go-practice" id="start_quiz" name="button_start" value="start" onclick="startTimer(duration, display); plusSlides(-1)">Start Timer!</div>
+                                <div style="font-size: 20px;" class="go-practice" id="start_quiz" name="button_start"
+                                    value="start" onclick="startTimer(duration, display); plusSlides(-1)">Start Timer!
+                                </div>
                                 <br>
                                 <p style="font-size: 12px; padding-top: 80px">Or skip to the next lesson below.</p>
                             </b>
-                                <div class="goto" style="margin: 50px;">
-                                    <a href="Teens_SubChoice.html" class="get_started" style="text-decoration: none;"> Next Lesson </a>
-                                </div>
-                            </div>
-                            <div class="mySlides">
-                            <h2>Question 1  </h2>
-                            <img src="images/Grocery_list-02.png" style="width:auto;height:426.23px;padding-right:20px;">
-                            <img src="images/Grocery.jpg" style="width:400px;height:auto;">
-                                <div class="item_list">Kelly needs to buy a strawberry yogurt and a cherry juice.<br> How much does she pay for her items? </div>
-                            <blockquote>  
-                                <label class="container">8$
-                                <input type="radio" name="radio" value="8$">
-                                <span class="checkmark"></span>
-                                </label>
-                                <label class="container">10$
-                                <input type="radio" name="radio" value="false">
-                                <span class="checkmark"></span>
-                                </label>
-                                <label class="container">13$
-                                <input type="radio" name="radio"value="false">
-                                <span class="checkmark"></span>
-                                </label>
-                            </blockquote><br><br>
-                            </div>
-                            <div class="mySlides">
-                                <h2>Question 2</h2>
-                                <img src="images/Grocery_list-02.png" style="width:auto;height:426.23px;padding-right:20px;">
-                                <img src="images/Grocery.jpg" style="width:400px;height:auto;">
-                                <div class="item_list">Josh needs to buy a bottle of ketchup and  vanilla yogurt. <br> How much does he pay for his items? </div>
-                                <blockquote>  
-                                    <label class="container">10$
-                                    <input type="radio" name="radio2" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">8$
-                                    <input type="radio" name="radio2" value="8$">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">6$
-                                    <input type="radio" name="radio2"value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                </blockquote><br><br>
-                            </div>
-                            <div class="mySlides">
-                                <h2>Question 3</h2>
-                                <img src="images/Grocery_list-02.png" style="width:auto;height:426.23px;padding-right:20px;">
-                                <img src="images/Grocery.jpg" style="width:400px;height:auto;">
-                                <div class="item_list">Josephine needs to buy a bottle of mustard and  orange juice. <br> How much does she pay for her items? </div>
-                                <blockquote>
-                                    <label class="container">5$
-                                    <input type="radio" name="radio3" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">9$
-                                    <input type="radio" name="radio3" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">11$
-                                    <input type="radio" name="radio3"value="11$">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                </blockquote><br><br>
-                            </div>
-                            <div class="mySlides">
-                                <h2>Question 4</h2>
-                                <img src="images/kq4.png" style="width:auto;height:426.23px;padding-right:20px; filter: hue-rotate(80deg)">
-                                <blockquote>
-                                    <label class="container">2
-                                    <input type="radio" name="radio4" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">8
-                                    <input type="radio" name="radio4" value="8">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">9
-                                    <input type="radio" name="radio4"value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                </blockquote><br><br>
-                            </div>
-                            <div class="mySlides">
-                                <h2> Question 5 </h2>
-                                <img src="images/kq5.png" style="width:100%;height:auto;padding-top:50px;filter: hue-rotate(280deg)">
-                                <blockquote>
-                                    <label class="container">5
-                                    <input type="radio" name="radio5" value="5">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">7
-                                    <input type="radio" name="radio5" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">13
-                                    <input type="radio" name="radio5"value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                </blockquote><br><br>
-                            </div>
-                            <div class="mySlides">
-                                <h2>Question 6</h2>
-                                <img src="images/Grocery_list-02.png" style="width:auto;height:426.23px;padding-right:20px;">
-                                <img src="images/Grocery.jpg" style="width:400px;height:auto;">
-                                 <div class="item_list">Jessica's total at the store is 29$.  She decided at the last minute to not buy the milk. <br> How much does she pay for her items in the end? </div>
-                                <blockquote>
-                                    <label class="container">18$
-                                    <input type="radio" name="radio6" value="18$">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">12$
-                                    <input type="radio" name="radio6" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">11$
-                                    <input type="radio" name="radio6"value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                </blockquote><br><br>
-                            </div>
-                            <div class="mySlides">
-                                <h2>Question 7</h2>
-                                <img src="images/kq7.png" style="width:auto;height:426.23px;padding-right:20px;">
-                                <div class="item_list">These all have the same answer...<br> What is the common answer? </div>
-                                <blockquote>
-                                    <label class="container">54
-                                    <input type="radio" name="radio7" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">36
-                                    <input type="radio" name="radio7" value="36">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">20
-                                    <input type="radio" name="radio7"value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                </blockquote><br><br>
-                            </div>
-                            <div class="mySlides">
-                                <h2>Question 8</h2>
-                                <img src="images/kq8.png" style="width:auto;height:426.23px;padding-right:20px;">
-                                  <div class="item_list">These all have the same answer...<br> What is the common answer? </div>
-                                <blockquote>
-                                    <label class="container">22
-                                    <input type="radio" name="radio8" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">12
-                                    <input type="radio" name="radio8" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">24
-                                    <input type="radio" name="radio8"value="24">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                </blockquote><br><br>
-                            </div>
-                            <div class="mySlides">
-                                <h2>Question 9</h2>
-                                <img src="images/kq9.png" style="width:auto;height:426.23px;padding-right:20px;">
-                                 <div class="item_list">What are the answers respectively? </div>
-                                <blockquote>
-                                    <label class="container">4, 4, 2
-                                    <input type="radio" name="radio9" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">8, 4, 5
-                                    <input type="radio" name="radio9" value="845">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">12, 4, 5
-                                    <input type="radio" name="radio9"value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                </blockquote><br><br>
-                            </div>
-                            <div class="mySlides">
-                                <h2>Question 10</h2>
-                                <img src="images/kq10.png" style="width:auto;height:426.23px;padding-right:20px;">
-                                <div class="item_list">What are the answers respectively? </div>
-                                <blockquote>
-                                    <label class="container">8, 5, 6
-                                    <input type="radio" name="radio10" value="856">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">6, 4, 8
-                                    <input type="radio" name="radio10" value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                    <label class="container">9, 5, 6
-                                    <input type="radio" name="radio10"value="false">
-                                    <span class="checkmark"></span>
-                                    </label>
-                                </blockquote><br><br>
-                            </div>
-                            <div class="mySlides" style="padding: 150px 0px" id="end">
-                                <!-- END QUIZ; BUTTONS -->
-                                <b>
-                                <input class="result" type="button" value="Grade Me"onClick="getScore(this.form);">
-                                <input class="result" style="animation-delay:0.2s" type="reset" value="Clear">
-                                </b>
-                                <br>
-                                <br>
-                                <b>
-                                <p>Number of score out of 10 = <input type= text size 10 name= "mark"></p>
-                                <p>Score in percentage = <input type=text size=10 name="percentage"></p>
-                                </b>
-                                <p style="display: block; font-size: 12px">ANSWERS
-                                    <br>
-                                    1: 1
-                                    <br>
-                                    2: 2
-                                    <br>
-                                    3: 3
-                                    <br>
-                                    4: 2
-                                    <br>
-                                    5: 1
-                                    <br>
-                                    6: 1
-                                    <br>
-                                    7: 2
-                                    <br>
-                                    8: 3
-                                    <br>
-                                    9: 2
-                                    <br>
-                                    10: 1
-                                </p>
-                                <div class="goto">
-                                    <a href="Teens_SubChoice.html" class="go-practice" style="text-decoration: none;"> Next Lesson </a>
-                                </div>
+                            <div class="goto" style="margin: 50px;">
+                                <a href="Teens_SubChoice.html" class="get_started" style="text-decoration: none;"> Next
+                                    Lesson </a>
                             </div>
                         </div>
-                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        <div class="mySlides">
+                            <h2>Question 1 </h2>
+                            <img src="images/Grocery_list-02.png"
+                                style="width:auto;height:426.23px;padding-right:20px;">
+                            <img src="images/Grocery.jpg" style="width:400px;height:auto;">
+                            <div class="item_list">Kelly needs to buy a strawberry yogurt and a cherry juice.<br> How
+                                much does she pay for her items? </div>
+                            <blockquote>
+                                <label class="container">8$
+                                    <input type="radio" name="radio" value="8$">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">10$
+                                    <input type="radio" name="radio" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">13$
+                                    <input type="radio" name="radio" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </blockquote><br><br>
+                        </div>
+                        <div class="mySlides">
+                            <h2>Question 2</h2>
+                            <img src="images/Grocery_list-02.png"
+                                style="width:auto;height:426.23px;padding-right:20px;">
+                            <img src="images/Grocery.jpg" style="width:400px;height:auto;">
+                            <div class="item_list">Josh needs to buy a bottle of ketchup and vanilla yogurt. <br> How
+                                much does he pay for his items? </div>
+                            <blockquote>
+                                <label class="container">10$
+                                    <input type="radio" name="radio2" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">8$
+                                    <input type="radio" name="radio2" value="8$">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">6$
+                                    <input type="radio" name="radio2" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </blockquote><br><br>
+                        </div>
+                        <div class="mySlides">
+                            <h2>Question 3</h2>
+                            <img src="images/Grocery_list-02.png"
+                                style="width:auto;height:426.23px;padding-right:20px;">
+                            <img src="images/Grocery.jpg" style="width:400px;height:auto;">
+                            <div class="item_list">Josephine needs to buy a bottle of mustard and orange juice. <br> How
+                                much does she pay for her items? </div>
+                            <blockquote>
+                                <label class="container">5$
+                                    <input type="radio" name="radio3" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">9$
+                                    <input type="radio" name="radio3" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">11$
+                                    <input type="radio" name="radio3" value="11$">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </blockquote><br><br>
+                        </div>
+                        <div class="mySlides">
+                            <h2>Question 4</h2>
+                            <img src="images/kq4.png"
+                                style="width:auto;height:426.23px;padding-right:20px; filter: hue-rotate(80deg)">
+                            <blockquote>
+                                <label class="container">2
+                                    <input type="radio" name="radio4" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">8
+                                    <input type="radio" name="radio4" value="8">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">9
+                                    <input type="radio" name="radio4" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </blockquote><br><br>
+                        </div>
+                        <div class="mySlides">
+                            <h2> Question 5 </h2>
+                            <img src="images/kq5.png"
+                                style="width:100%;height:auto;padding-top:50px;filter: hue-rotate(280deg)">
+                            <blockquote>
+                                <label class="container">5
+                                    <input type="radio" name="radio5" value="5">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">7
+                                    <input type="radio" name="radio5" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">13
+                                    <input type="radio" name="radio5" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </blockquote><br><br>
+                        </div>
+                        <div class="mySlides">
+                            <h2>Question 6</h2>
+                            <img src="images/Grocery_list-02.png"
+                                style="width:auto;height:426.23px;padding-right:20px;">
+                            <img src="images/Grocery.jpg" style="width:400px;height:auto;">
+                            <div class="item_list">Jessica's total at the store is 29$. She decided at the last minute
+                                to not buy the milk. <br> How much does she pay for her items in the end? </div>
+                            <blockquote>
+                                <label class="container">18$
+                                    <input type="radio" name="radio6" value="18$">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">12$
+                                    <input type="radio" name="radio6" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">11$
+                                    <input type="radio" name="radio6" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </blockquote><br><br>
+                        </div>
+                        <div class="mySlides">
+                            <h2>Question 7</h2>
+                            <img src="images/kq7.png" style="width:auto;height:426.23px;padding-right:20px;">
+                            <div class="item_list">These all have the same answer...<br> What is the common answer?
+                            </div>
+                            <blockquote>
+                                <label class="container">54
+                                    <input type="radio" name="radio7" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">36
+                                    <input type="radio" name="radio7" value="36">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">20
+                                    <input type="radio" name="radio7" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </blockquote><br><br>
+                        </div>
+                        <div class="mySlides">
+                            <h2>Question 8</h2>
+                            <img src="images/kq8.png" style="width:auto;height:426.23px;padding-right:20px;">
+                            <div class="item_list">These all have the same answer...<br> What is the common answer?
+                            </div>
+                            <blockquote>
+                                <label class="container">22
+                                    <input type="radio" name="radio8" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">12
+                                    <input type="radio" name="radio8" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">24
+                                    <input type="radio" name="radio8" value="24">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </blockquote><br><br>
+                        </div>
+                        <div class="mySlides">
+                            <h2>Question 9</h2>
+                            <img src="images/kq9.png" style="width:auto;height:426.23px;padding-right:20px;">
+                            <div class="item_list">What are the answers respectively? </div>
+                            <blockquote>
+                                <label class="container">4, 4, 2
+                                    <input type="radio" name="radio9" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">8, 4, 5
+                                    <input type="radio" name="radio9" value="845">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">12, 4, 5
+                                    <input type="radio" name="radio9" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </blockquote><br><br>
+                        </div>
+                        <div class="mySlides">
+                            <h2>Question 10</h2>
+                            <img src="images/kq10.png" style="width:auto;height:426.23px;padding-right:20px;">
+                            <div class="item_list">What are the answers respectively? </div>
+                            <blockquote>
+                                <label class="container">8, 5, 6
+                                    <input type="radio" name="radio10" value="856">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">6, 4, 8
+                                    <input type="radio" name="radio10" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container">9, 5, 6
+                                    <input type="radio" name="radio10" value="false">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </blockquote><br><br>
+                        </div>
+                        <div class="mySlides" style="padding: 150px 0px" id="end">
+                            <!-- END QUIZ; BUTTONS -->
+                            <b>
+                                <input class="result" type="button" value="Grade Me" onClick="getScore(this.form);">
+                                <input class="result" style="animation-delay:0.2s" type="reset" value="Clear">
+                            </b>
+                            <br>
+                            <br>
+                            <b>
+                                <p>Number of score out of 10 = <input type=text size 10 name="mark"></p>
+                                <p>Score in percentage = <input type=text size=10 name="percentage"></p>
+                            </b>
+                            <p style="display: block; font-size: 12px">ANSWERS
+                                <br>
+                                1: 1
+                                <br>
+                                2: 2
+                                <br>
+                                3: 3
+                                <br>
+                                4: 2
+                                <br>
+                                5: 1
+                                <br>
+                                6: 1
+                                <br>
+                                7: 2
+                                <br>
+                                8: 3
+                                <br>
+                                9: 2
+                                <br>
+                                10: 1
+                            </p>
+                            <div class="goto">
+                                <a href="Teens_SubChoice.html" class="go-practice" style="text-decoration: none;"> Next
+                                    Lesson </a>
+                            </div>
+                        </div>
                     </div>
-                    <br>
-           
-                    <div class="timer">Time left: <span id="time">20:00</span> minutes!</div>
-                </form>
-                <!-- outside instruction div here -->
-   <!--Timer-->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
 
-         
-                
+                <div class="timer">Time left: <span id="time">20:00</span> minutes!</div>
+            </form>
+            <!-- outside instruction div here -->
+            <!--Timer-->
 
-            </div>
-            
+
+
+
         </div>
-        
-        <footer>
-            
-        </footer>
-        
-<!-- JAVASCRIPT --------------------------------------------------->
-        
+
+    </div>
+
+    <footer>
+
+    </footer>
+
+    <!-- JAVASCRIPT --------------------------------------------------->
+
     <script>
-        
+
         function startTimer(duration, display) {
             var timer = duration, minutes, seconds;
             setInterval(function () {
@@ -897,118 +930,119 @@
             document.querySelector(".timer").style.fontSize = "35px";
         };
     </script>
-    <script> 
-            var numQues = 10;
-            var numChoi = 3;
-            
-            var answers = new Array(10);
-            
-            
-            answers[0] = "8$";
-            answers[1] = "8$";
-            answers[2] = "11$";
-            answers[3] = "8";
-            answers[4] = "5"; 
-            answers[5] = "18$";
-            answers[6] = "36";
-            answers[7] = "24";
-            answers[8] = "845";
-            answers[9] = "856";
-            
-            
-            
-            function getScore(form) {
-            
+    <script>
+        var numQues = 10;
+        var numChoi = 3;
+
+        var answers = new Array(10);
+
+
+        answers[0] = "8$";
+        answers[1] = "8$";
+        answers[2] = "11$";
+        answers[3] = "8";
+        answers[4] = "5";
+        answers[5] = "18$";
+        answers[6] = "36";
+        answers[7] = "24";
+        answers[8] = "845";
+        answers[9] = "856";
+
+
+
+        function getScore(form) {
+
             var score = 0;
-            
+
             var currElt;
-            
+
             var currSelection;
-            
-            for (i=0; i<numQues; i++) {
-            
-            currElt = i*numChoi;
-            
-            answered=false;
-            
-            for (j=0; j<numChoi; j++) {
 
-                currSelection = form.elements[currElt + j];
+            for (i = 0; i < numQues; i++) {
 
-                if (currSelection.checked) {
+                currElt = i * numChoi;
 
-                    answered=true;
-                    
-                    if (currSelection.value == answers[i]) {
+                answered = false;
 
-                    score++;
+                for (j = 0; j < numChoi; j++) {
 
-                    break;
+                    currSelection = form.elements[currElt + j];
+
+                    if (currSelection.checked) {
+
+                        answered = true;
+
+                        if (currSelection.value == answers[i]) {
+
+                            score++;
+
+                            break;
+
+                        }
 
                     }
 
                 }
 
+                if (answered === false) { alert("Do answer all the questions, Please retry..."); return false; }
+
             }
-            
-            if (answered ===false){alert("Do answer all the questions, Please retry...") ;return false;}
-            
-            }
-            
-            var scoreper = Math.round(score/numQues*100);
-            
+
+            var scoreper = Math.round(score / numQues * 100);
+
             form.percentage.value = scoreper + "%";
-            
-            form.mark.value=score;
-            
-            }
-    </script>           
+
+            form.mark.value = score;
+
+        }
+    </script>
     <script>
-        
+
         var slideIndex = 1;
         showSlides(slideIndex);
 
         function plusSlides(n) {
-          showSlides(slideIndex += n);
+            showSlides(slideIndex += n);
         }
 
         function currentSlide(n) {
-          showSlides(slideIndex = n);
+            showSlides(slideIndex = n);
         }
 
         function showSlides(n) {
-          var i;
-          var slides = document.getElementsByClassName("mySlides");
-          var dots = document.getElementsByClassName("dot");
-          if (n > slides.length) {slideIndex = 1}    
-          if (n < 1) {slideIndex = slides.length}
-          for (i = 0; i < slides.length; i++) {
-              slides[i].style.display = "none";  
-          }
-          for (i = 0; i < dots.length; i++) {
-              dots[i].className = dots[i].className.replace(" active", "");
-          }
-          slides[slideIndex-1].style.display = "block";  
-          dots[slideIndex-1].className += " active";
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
         }
-    
-    </script>  
-    <script> 
+
+    </script>
+    <script>
         /* Dropdown */
         var dropdown = document.getElementsByClassName("drop2");
         var i;
 
         for (i = 0; i < dropdown.length; i++) {
-          dropdown[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          var dropdownContent = this.nextElementSibling;
-          if (dropdownContent.style.display === "block") {
-          dropdownContent.style.display = "none";
-          } else {
-          dropdownContent.style.display = "block";
-          }
-          });
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
         }
     </script>
-    </body>
+</body>
+
 </html>

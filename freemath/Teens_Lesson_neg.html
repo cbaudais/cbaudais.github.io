@@ -1,76 +1,92 @@
 <html>
-   <title>FreeMath.</title>
-   <style>
-      /* #B81229 -->dark red  #4d4557 -->dark  #29abe2 -->blue  #04b59d -->yellow #04b59d -->green*/
-      body {
+<title>FreeMath.</title>
+<style>
+   /* #B81229 -->dark red  #4d4557 -->dark  #29abe2 -->blue  #04b59d -->yellow #04b59d -->green*/
+   body {
       width: 100%;
       height: 100%;
       margin: 0px;
       font-family: 'Quicksand', monospace;
       background-color: whitesmoke;
       overflow-x: hidden;
-      }
-      /* header ******************************************************/
-      .nav {
-      background-color: #04b59d; /* nav text color below */
+   }
+
+   /* header ******************************************************/
+   .nav {
+      background-color: #04b59d;
+      /* nav text color below */
       display: flex;
       width: 100%;
-      /*            overflow: hidden;*/ /* or else fixed menu's dropdown doesnt show */
+      /*            overflow: hidden;*/
+      /* or else fixed menu's dropdown doesnt show */
       font-size: 16px;
       /* if font change, mind the padding for h1 and .nav a */
       position: fixed;
       z-index: 5;
-      box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.2);
-      }
-      h1 {
+      box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.2);
+   }
+
+   h1 {
       margin: 0px;
       padding: 2px 30px 0px;
       text-align: center;
-      }
-      h1 a:hover {
-      background-color: rgba(0,0,0,0) !important;
+   }
+
+   h1 a:hover {
+      background-color: rgba(0, 0, 0, 0) !important;
       color: white !important;
-      }
-      .nav a, .dropdown .drop {
+   }
+
+   .nav a,
+   .dropdown .drop {
       font-size: inherit;
       text-align: center;
       text-decoration: none;
       border: none;
       outline: none;
-      color: white;               /* NAV TEXT COLOR HERE */
+      color: white;
+      /* NAV TEXT COLOR HERE */
       padding: 16px 16px 10px;
       background-color: inherit;
       font-family: inherit;
       margin: 0;
       transition: 0.5s;
-      }
-      .nav a:hover, .dropdown:hover .drop {
-      background-color: white;               /* NAV-HOVER COLOR HERE */
+   }
+
+   .nav a:hover,
+   .dropdown:hover .drop {
+      background-color: white;
+      /* NAV-HOVER COLOR HERE */
       color: black;
-      }
-      .drop-content {
+   }
+
+   .drop-content {
       display: none;
       position: absolute;
       background-color: #f9f9f9;
       min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
       z-index: 5;
-      }
-      .drop-content a {
+   }
+
+   .drop-content a {
       float: none;
       color: black;
       padding: 12px 16px;
       text-decoration: none;
       display: block;
       text-align: left;
-      }
-      .drop-content a:hover {
+   }
+
+   .drop-content a:hover {
       background-color: #cccccc;
-      }
-      .dropdown:hover .drop-content {
+   }
+
+   .dropdown:hover .drop-content {
       display: block;
-      }
-      .sidebar {
+   }
+
+   .sidebar {
       position: fixed;
       top: 100px;
       left: 15px;
@@ -80,8 +96,10 @@
       height: auto;
       overflow: hidden;
       height: 700px;
-      }
-      .sidebar a, .drop2 {
+   }
+
+   .sidebar a,
+   .drop2 {
       padding: 6px 8px 6px 16px;
       text-decoration: none;
       font-size: 16px;
@@ -93,31 +111,36 @@
       text-align: left;
       cursor: pointer;
       outline: none;
-      }
-      .sidebar a:hover, .drop2:hover  {
+   }
+
+   .sidebar a:hover,
+   .drop2:hover {
       display: block;
       color: black;
       text-decoration: none;
       transition: 0.5s;
       max-width: 100%;
       background-color: white;
-      }
-      /* active dropdown button, pulled by javascript */
-      .active {
+   }
+
+   /* active dropdown button, pulled by javascript */
+   .active {
       display: block;
       color: black;
       text-decoration: none;
       transition: 0.5s;
       max-width: 100%;
       background-color: white;
-      }
-      .dropdown-content2 {
+   }
+
+   .dropdown-content2 {
       display: none;
       background-color: #66cdaa;
       text-indent: 8px;
-      }
-      /* CONTENT **************************************************/
-      .content {
+   }
+
+   /* CONTENT **************************************************/
+   .content {
       display: inline-block;
       position: relative;
       margin: 80px 30px 50px 280px;
@@ -127,32 +150,37 @@
       bottom: 50px;
       left: 25px;
       width: 80%;
-      }
-      .contains {
+   }
+
+   .contains {
       position: relative;
       margin: 0px;
       display: block;
       height: inherit;
       width: inherit;
-      }
-      h2 {
+   }
+
+   h2 {
       margin: auto;
       font-size: 30px;
-      }
-      .instruction {
+   }
+
+   .instruction {
       position: relative;
       width: 100%;
       height: auto;
       font-size: 25px;
       font-weight: 500;
       text-align: center;
-      }
-      .adjust {
+   }
+
+   .adjust {
       display: inline-flex;
       width: 100%;
       justify-content: center;
-      }
-      .bordercol {
+   }
+
+   .bordercol {
       display: inline-flex;
       width: 100%;
       justify-content: center;
@@ -160,21 +188,25 @@
       background-color: whitesmoke;
       position: relative;
       border-radius: var(--borderWidth);
-      }
-      .bordercol:after {
+   }
+
+   .bordercol:after {
       content: '';
       position: absolute;
       top: calc(-1 * var(--borderWidth));
       left: calc(-1 * var(--borderWidth));
       height: calc(100% + var(--borderWidth) * 2);
       width: calc(100% + var(--borderWidth) * 2);
-      background: linear-gradient(60deg, #29abe2, #fbb03b, #B8214B, #04b59d);
+      background: linear-gradient(60deg, #29abe2, var(--kids), #B8214B, #04b59d);
       border-radius: calc(2 * var(--borderWidth));
-      z-index: -1; /* below white */
+      z-index: -1;
+      /* below white */
       animation: bordermove 3s infinite;
-      background-size: 300% 300%; /* bigger, move in */
-      }
-      .circle {
+      background-size: 300% 300%;
+      /* bigger, move in */
+   }
+
+   .circle {
       position: relative;
       background-color: #29abe2;
       margin: 5px;
@@ -184,13 +216,15 @@
       display: inline-flex;
       top: 30px;
       transition: 0.5s;
-      }
-      .circle:hover {
+   }
+
+   .circle:hover {
       background-color: #5AC5F2;
       width: 80px;
       height: 80px;
-      }
-      .circle2 {
+   }
+
+   .circle2 {
       position: relative;
       background-color: #B81229;
       margin: 5px;
@@ -200,13 +234,15 @@
       display: inline-flex;
       top: 30px;
       transition: 0.5s;
-      }
-      .circle2:hover {
+   }
+
+   .circle2:hover {
       background-color: #DE142C;
       width: 80px;
       height: 80px;
-      }
-      .input {
+   }
+
+   .input {
       position: relative;
       top: 10px;
       height: 50px;
@@ -215,21 +251,25 @@
       font-size: 20px;
       font-family: 'Quicksand', sans-serif;
       text-align: center;
-      }
-      /* Cards ******************************************/
-      .container {
+   }
+
+   /* Cards ******************************************/
+   .container {
       position: relative;
       margin: 20px;
       width: 500px;
       height: 400px;
       perspective: 1000px;
-      }
-      .card {
+   }
+
+   .card {
       transition: transform 1s;
       transform-style: preserve-3d;
       cursor: pointer;
-      }
-      .front, .back {
+   }
+
+   .front,
+   .back {
       position: absolute;
       display: flex;
       flex-direction: column;
@@ -240,27 +280,33 @@
       width: 100%;
       padding: 50px 0px;
       height: 200px;
-      }
-      .front {
+   }
+
+   .front {
       border: 2px solid black;
       background-color: #04b59d;
-      }
-      .front:hover {
+   }
+
+   .front:hover {
       box-shadow: 0px 0px 24px 0px #04b59d;
-      }
-      .back {
+   }
+
+   .back {
       border: 2px solid black;
       transform: rotateY(180deg);
       background-color: red;
-      }
-      /*        GO TO QUIZ **************************************/
-      .goto {
+   }
+
+   /*        GO TO QUIZ **************************************/
+   .goto {
       position: relative;
       bottom: 20px;
       right: 20px;
-      }
-      .go-quiz {
-      position: relative; /* pay attention, float: right is there */
+   }
+
+   .go-quiz {
+      position: relative;
+      /* pay attention, float: right is there */
       /*            margin-bottom: 20px;*/
       font-size: 16px;
       font-weight: 700;
@@ -276,13 +322,15 @@
       float: right;
       display: inline-block;
       text-align: center;
-      }
-      .go-quiz:hover{
+   }
+
+   .go-quiz:hover {
       color: black;
       background-color: #43EEB5;
       box-shadow: 0px 0px 24px 10px rgba(67, 238, 171, .64);
-      }
-      .go-quiz::after {
+   }
+
+   .go-quiz::after {
       content: '';
       width: 30px;
       height: 30px;
@@ -294,44 +342,52 @@
       left: 50%;
       transform: translate(-50%, -50%);
       animation: ring 1.5s infinite;
-      }
-      .go-quiz:hover::after {
+   }
+
+   .go-quiz:hover::after {
       animation: none;
       display: none;
-      }
-      /*        ANIMATIONS *****************************************/
-      @keyframes bordermove {
+   }
+
+   /*        ANIMATIONS *****************************************/
+   @keyframes bordermove {
       0% {
-      background-position: 0% 50%;
+         background-position: 0% 50%;
       }
+
       50% {
-      background-position: 100% 50%;
+         background-position: 100% 50%;
       }
+
       100% {
-      background-position: 0% 50%;
+         background-position: 0% 50%;
       }
-      }
-      @keyframes ring {
+   }
+
+   @keyframes ring {
       from {
-      width: 30px;
-      height: 10px;
-      opacity: 1;
+         width: 30px;
+         height: 10px;
+         opacity: 1;
       }
+
       to {
-      width: 350px;
-      height: 150px;
-      opacity: 0;
+         width: 350px;
+         height: 150px;
+         opacity: 0;
       }
-      }
-      /****************************************************/
-      footer {
+   }
+
+   /****************************************************/
+   footer {
       width: 100%;
       height: 40px;
       position: relative;
       bottom: 0px;
-      }
-      /* TO COMMENT OUT LATER */
-      /*
+   }
+
+   /* TO COMMENT OUT LATER */
+   /*
       .content {
       border: 2px solid;
       }
@@ -342,21 +398,26 @@
       border: 2px solid aqua;
       }
       */
-      /*HOVER BUTTONS*/
-      .container_hover{
-      padding:10px;
-      display:inline-block;
+   /*HOVER BUTTONS*/
+   .container_hover {
+      padding: 10px;
+      display: inline-block;
       text-decoration: none;
       color: #111;
-      }
-      section.hover_slide_tainer{
+   }
+
+   section.hover_slide_tainer {
       max-width: 300px;
-      margin:0;
-        
+      margin: 0;
+
       text-align: center;
-      }
-      button:hover{cursor: pointer}
-      button {
+   }
+
+   button:hover {
+      cursor: pointer
+   }
+
+   button {
       background: transparent;
       outline: none;
       position: relative;
@@ -365,49 +426,67 @@
       overflow: hidden;
       font-size: 10px;
       font-family: 'Quicksand', monospace;
-      }
-      /*button:before (attr data-hover)*/
-      button:hover:before{
-      opacity: 1; 
-      transform: translate(0,0);
-      }
-      button:before{
+   }
+
+   /*button:before (attr data-hover)*/
+   button:hover:before {
+      opacity: 1;
+      transform: translate(0, 0);
+   }
+
+   button:before {
       content: attr(data-hover);
       position: absolute;
-      top: 1.1em; 
+      top: 1.1em;
       left: 0;
       width: 100%;
       letter-spacing: 3px;
       font-size: 20px;
       font-family: 'Quicksand', monospace;
       font-weight: 800;
-      color:#04b59d;
+      color: #04b59d;
       opacity: 0;
-      transform: translate(-100%,0);
+      transform: translate(-100%, 0);
       transition: all 0.5s ease-in-out;
-      }
-      /*button div (button text before hover)*/
-      button:hover div{
-      opacity: 0; transform: translate(100%,0)}
-      button div{
+   }
+
+   /*button div (button text before hover)*/
+   button:hover div {
+      opacity: 0;
+      transform: translate(100%, 0)
+   }
+
+   button div {
       letter-spacing: 3px;
       font-weight: 800;
       font-size: 20px;
       font-family: 'Quicksand', monospace;
-      color:#04b59d;
+      color: #04b59d;
       transition: all 0.5s ease-in-out;
-      }
-      * {box-sizing: border-box}
-      .mySlides {display: none}
-      img {vertical-align: middle;}
-      /* Slideshow container */
-      .slideshow-container {
+   }
+
+   * {
+      box-sizing: border-box
+   }
+
+   .mySlides {
+      display: none
+   }
+
+   img {
+      vertical-align: middle;
+   }
+
+   /* Slideshow container */
+   .slideshow-container {
       max-width: 1000px;
       position: relative;
       margin: auto;
-      }
-      /* Next & previous buttons */
-      .prev, .next {
+   }
+
+   /* Next & previous buttons */
+   .prev,
+   .next {
       cursor: pointer;
       position: absolute;
       top: 50%;
@@ -420,24 +499,28 @@
       transition: 0.6s ease;
       border-radius: 0 3px 3px 0;
       user-select: none;
-      }
-       
-    
-      /* Position the "next button" to the right */
-      .next {
+   }
+
+
+   /* Position the "next button" to the right */
+   .next {
       right: 0;
       border-radius: 3px 0 0 3px;
-      }
-      .prev {
+   }
+
+   .prev {
       left: 0;
       border-radius: 3px 0 0 3px;
-      }
-      /* On hover, add a black background color with a little bit see-through */
-      .prev:hover, .next:hover {
-      background-color: rgba(0,0,0,0.8);
-      }
-      /* The dots/bullets/indicators */
-      .dot {
+   }
+
+   /* On hover, add a black background color with a little bit see-through */
+   .prev:hover,
+   .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+   }
+
+   /* The dots/bullets/indicators */
+   .dot {
       cursor: pointer;
       height: 15px;
       width: 15px;
@@ -446,108 +529,122 @@
       border-radius: 50%;
       display: inline-block;
       transition: 0.6s ease;
-      }
-      @keyframes fade {
-      from {opacity: .4} 
-      to {opacity: 1}
-      }
-      /* On smaller screens, decrease text size */
-      @media only screen and (max-width: 300px) {
-      .prev, .next,.text {font-size: 11px}
-      }
-       
-       
-       #highlight {
-           background-image: linear-gradient(to right, rgba(255,255,255,0) 50%, #66cdaa 50%);
-            background-position: -0%;
-            background-size: 200% auto;
-            color: #222;
-            text-decoration: none;
-            transition: 0.5s;  
-       }
-       
-       #highlight:hover {
-           background-position: -100%;  
-       }
-       
-   </style>
-    
-    
-   <body>
-      <head>
-            
-            <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   }
 
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            
-            <div class="nav">
-                <h1><a href="Home.html">FreeMath</a></h1>
-                <a href="Home.html">Home</a>
-                <div class="dropdown">
-                    <button class="drop">Children <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="drop-content">
-                      <a href="Kids_SubChoice.html">All Subjects</a>
-                      <a href="Kids_Quiz.html">Quiz</a>
-                    </div>
-                </div> 
-                <div class="dropdown">
-                    <button class="drop">Teens <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="drop-content">
-                      <a href="Teens_SubChoice.html">All Subjects</a>
-                      <a href="Teens_Quiz.html">Quiz</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <button class="drop">Adults <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="drop-content">
-                      <a href="Adults_SubChoice.html">All Subjects</a>
-                      <a href="Adults_Quiz.html">Quiz</a>
-                    </div>
-                </div>
-            </div>
-        </head>
-        
-        <div class="sidebar">
-            <br>
-            <a href="Home.html">Home</a>
-            <button class="drop2">Children 
-                <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
-            </button>
-            <div class="dropdown-content2">
-                <a href="Kids_SubChoice.html">All Subjects</a>
-                      <a href="Kids_Lesson_add.html">Addition</a>
-                      <a href="Kids_Lesson_sub.html">Subtraction</a>
-                      <a href="Kids_Lesson_mult.html">Multiplication</a>
-                      <a href="Kids_Lesson_div.html">Division</a>
-                      <a href="Kids_Quiz.html">Quiz</a>
-            </div>
-            <button class="drop2">Teens 
-                <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
-            </button>
-            <div class="dropdown-content2">
-                <a href="Teens_SubChoice.html">All Subjects</a>
+   @keyframes fade {
+      from {
+         opacity: .4
+      }
 
-                      <a href="Teens_Lesson_alg.html">Algebra</a>
-                      <a href="Teens_Lesson_fact.html">Factorization</a>
-                      <a href="Teens_Lesson_neg.html">Negative Numbers</a>
-                      <a href="Teens_Quiz.html">Quiz</a>
-            </div>
-            <button class="drop2">Adults 
-                <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
+      to {
+         opacity: 1
+      }
+   }
+
+   /* On smaller screens, decrease text size */
+   @media only screen and (max-width: 300px) {
+
+      .prev,
+      .next,
+      .text {
+         font-size: 11px
+      }
+   }
+
+
+   #highlight {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #66cdaa 50%);
+      background-position: -0%;
+      background-size: 200% auto;
+      color: #222;
+      text-decoration: none;
+      transition: 0.5s;
+   }
+
+   #highlight:hover {
+      background-position: -100%;
+   }
+</style>
+
+
+<body>
+
+   <head>
+
+      <link
+         href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300;400;500;600;700&display=swap"
+         rel="stylesheet">
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <div class="nav">
+         <h1><a href="Home.html">FreeMath</a></h1>
+         <a href="Home.html">Home</a>
+         <div class="dropdown">
+            <button class="drop">Children <i class="fa fa-caret-down"></i>
             </button>
-            <div class="dropdown-content2">
-                <a href="Adults_SubChoice.html">All Subjects</a>
-                      <a href="Adults_SubChoice.html">Calculus</a>
-                      <a href="Adults_Lesson_lim.html">Limits</a>
-                      <a href="Adults_SubChoice.html">Derivatives</a>
-                      <a href="Adults_Quiz.html">Quiz</a>
+            <div class="drop-content">
+               <a href="Kids_SubChoice.html">All Subjects</a>
+               <a href="Kids_Quiz.html">Quiz</a>
             </div>
-            <br>
-        </div>
-      <!--
+         </div>
+         <div class="dropdown">
+            <button class="drop">Teens <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="drop-content">
+               <a href="Teens_SubChoice.html">All Subjects</a>
+               <a href="Teens_Quiz.html">Quiz</a>
+            </div>
+         </div>
+         <div class="dropdown">
+            <button class="drop">Adults <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="drop-content">
+               <a href="Adults_SubChoice.html">All Subjects</a>
+               <a href="Adults_Quiz.html">Quiz</a>
+            </div>
+         </div>
+      </div>
+   </head>
+
+   <div class="sidebar">
+      <br>
+      <a href="Home.html">Home</a>
+      <button class="drop2">Children
+         <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
+      </button>
+      <div class="dropdown-content2">
+         <a href="Kids_SubChoice.html">All Subjects</a>
+         <a href="Kids_Lesson_add.html">Addition</a>
+         <a href="Kids_Lesson_sub.html">Subtraction</a>
+         <a href="Kids_Lesson_mult.html">Multiplication</a>
+         <a href="Kids_Lesson_div.html">Division</a>
+         <a href="Kids_Quiz.html">Quiz</a>
+      </div>
+      <button class="drop2">Teens
+         <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
+      </button>
+      <div class="dropdown-content2">
+         <a href="Teens_SubChoice.html">All Subjects</a>
+
+         <a href="Teens_Lesson_alg.html">Algebra</a>
+         <a href="Teens_Lesson_fact.html">Factorization</a>
+         <a href="Teens_Lesson_neg.html">Negative Numbers</a>
+         <a href="Teens_Quiz.html">Quiz</a>
+      </div>
+      <button class="drop2">Adults
+         <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
+      </button>
+      <div class="dropdown-content2">
+         <a href="Adults_SubChoice.html">All Subjects</a>
+         <a href="Adults_SubChoice.html">Calculus</a>
+         <a href="Adults_Lesson_lim.html">Limits</a>
+         <a href="Adults_SubChoice.html">Derivatives</a>
+         <a href="Adults_Quiz.html">Quiz</a>
+      </div>
+      <br>
+   </div>
+   <!--
          - All lesson inside instruction div
          - h2 tag is lesson title
          - all divs with adjust class makes content lay horizontally (flex)
@@ -555,245 +652,254 @@
          - p style are changed directly in html, keep styling consistent
          - adding bordelcol class gives it the animated border
          -->
-      <div class="content">
-         <div class="contains">
-            <h2>Negative Numbers</h2>
-            <hr style="border: 3px solid #04b59d; border-radius: 5px;">
+   <div class="content">
+      <div class="contains">
+         <h2>Negative Numbers</h2>
+         <hr style="border: 3px solid #04b59d; border-radius: 5px;">
+         <br>
+         <div class="instruction">
             <br>
-            <div class="instruction">
-               <br>
-               <div class="slideshow-container">
-                  <div class="mySlides">
-                     <div class="adjust">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Hlal9ME2Aig" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                     </div>
-                  </div>
-                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                  <a class="next" onclick="plusSlides(1)">&#10095;</a>   
-                  <div class="mySlides">
-                     <div class="adjust">
-                       <iframe width="560" height="315" src="https://www.youtube.com/embed/NQSN00zL5gg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                     </div>
+            <div class="slideshow-container">
+               <div class="mySlides">
+                  <div class="adjust">
+                     <iframe width="560" height="315" src="https://www.youtube.com/embed/Hlal9ME2Aig" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                   </div>
                </div>
-               <br>
-               <br>
-               <hr style="border: 1px dashed #04b59d">
-               <p style="font-size: 20px; margin: 0px">Numbers can be <b>positive</b> or <b>negative</b>.</p>
-               <br>
-               <p style="font-size: 20px; margin: 0px">Here's a number line that should look very familiar. It starts at 0, then counts up by 1 starting from there:</p>
-               <br>
-               <div class="adjust">
-                  <div class="circletainer">
-                     <img src="images/Teens_neg.JPG" style="width:700px;">
+               <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+               <a class="next" onclick="plusSlides(1)">&#10095;</a>
+               <div class="mySlides">
+                  <div class="adjust">
+                     <iframe width="560" height="315" src="https://www.youtube.com/embed/NQSN00zL5gg" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                   </div>
-               </div>
-               <br>
-               <br>
-               <p style="font-size: 20px; margin: 0px">We know that if we were to keep going to the right, we would have 1, then2, and so on.
-                  What happens if we keep going to the left of 0 ? We get negative numbers! <br>To the left of 0 is -1, -2, -3. It's as simple as that!
-               </p>
-               <b>
-                  <p>Adding and Subtracting</p>
-               </b>
-               <p style="font-size: 20px; margin: 0px">Two like signs become a positive sign. Two unlike signs become a negative sign      </p>
-               <br>
-               
-               <p style="font-size: 20px; margin: 0px" id="highlight">
-                   <b>Example:</b>
-                   <br>
-                   <br>
-                  Like signs: 
-                  <br>
-                  <br>
-                  3+(+2) = 3 + 2 = 5
-                  <br>
-                  5+(+1) = 5 + 1 = 6
-                  <br>
-                  <br>
-                  Unlike signs: 
-                  <br>
-                  <br>
-                  7+(−2) = 7 − 2 = 5
-                  <br>
-                  8−(+2) = 8 − 2 = 6
-                  <br>
-                  <br>
-                  Addding negative numbers is the same as subtracting.
-                  <br>
-                  Subtracting negative numbers is the same as adding.
-               </p>
-               <br>
-               <br>
-               <br>
-               <hr style="border: 1px dashed #04b59d">
-               <p>Try it yourself:</p>
-               <div class="adjust">
-                  <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">6</p>
-                  <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">-</p>
-                  <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">( -2 )</p>
-                  <p style="font-weight: 300; font-size: 50px; padding: 0px 30px">=</p>
-                  <input class="input" id="answer" oninput="getAns()" style="border: solid; border-radius: 5px">
-               </div>
-               <div class="adjust" style="margin: 0px 0px 20px 0px">
-                  <p id="ans" style="margin: 0px"></p>
-               </div>
-               <hr style="border: 1px dashed #04b59d">
-               <br>
-                <div class="adjust">
-                  <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">12</p>
-                  <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">-</p>
-                  <p style="font-weight: 700; font-size: 50px; padding: 0px 20px">( -5 )</p>
-                  <p style="font-weight: 300; font-size: 50px; padding: 0px 30px">=</p>
-                  <input class="input" id="answer2" oninput="getAns2()" style="border: solid; border-radius: 5px">
-               </div>
-               <div class="adjust" style="margin: 0px 0px 20px 0px">
-                  <p id="ans2" style="margin: 0px"></p>
-               </div>
-               <hr style="border: 1px dashed #04b59d">
-               <br>
-               <p>Hover over the cards to jog your memory of some important information.</p>
-               <div class="container_hover">
-                  <section class="hover_slide_tainer">
-                     <button data-hover="...is counting to the left!">
-                        <div>Counting <br>Negative Numbers...</div>
-                     </button>
-                  </section>
-               </div>
-               <div class="container_hover">
-                  <section class="hover_slide_tainer">
-                     <button data-hover="...is the same as substracting">
-                        <div>Adding <br>
-                           Negative Numbers...
-                        </div>
-                     </button>
-                  </section>
-               </div>
-               <div class="container_hover">
-                  <section class="hover_slide_tainer">
-                     <button data-hover="...is the same as adding">
-                        <div>Subtracting<br>
-                           Negative Numbers...
-                        </div>
-                     </button>
-                  </section>
                </div>
             </div>
             <br>
             <br>
+            <hr style="border: 1px dashed #04b59d">
+            <p style="font-size: 20px; margin: 0px">Numbers can be <b>positive</b> or <b>negative</b>.</p>
             <br>
-            <!-- outside instruction div here -->
-            <div class="goto">
-               <a href="Teens_Lesson_alg.html" class="go-quiz" style="text-decoration: none;"> Next Lesson </a>
+            <p style="font-size: 20px; margin: 0px">Here's a number line that should look very familiar. It starts at 0,
+               then counts up by 1 starting from there:</p>
+            <br>
+            <div class="adjust">
+               <div class="circletainer">
+                  <img src="images/Teens_neg.JPG" style="width:700px;">
+               </div>
             </div>
             <br>
             <br>
+            <p style="font-size: 20px; margin: 0px">We know that if we were to keep going to the right, we would have 1,
+               then2, and so on.
+               What happens if we keep going to the left of 0 ? We get negative numbers! <br>To the left of 0 is -1, -2,
+               -3. It's as simple as that!
+            </p>
+            <b>
+               <p>Adding and Subtracting</p>
+            </b>
+            <p style="font-size: 20px; margin: 0px">Two like signs become a positive sign. Two unlike signs become a
+               negative sign </p>
+            <br>
+
+            <p style="font-size: 20px; margin: 0px" id="highlight">
+               <b>Example:</b>
+               <br>
+               <br>
+               Like signs:
+               <br>
+               <br>
+               3+(+2) = 3 + 2 = 5
+               <br>
+               5+(+1) = 5 + 1 = 6
+               <br>
+               <br>
+               Unlike signs:
+               <br>
+               <br>
+               7+(−2) = 7 − 2 = 5
+               <br>
+               8−(+2) = 8 − 2 = 6
+               <br>
+               <br>
+               Addding negative numbers is the same as subtracting.
+               <br>
+               Subtracting negative numbers is the same as adding.
+            </p>
+            <br>
+            <br>
+            <br>
+            <hr style="border: 1px dashed #04b59d">
+            <p>Try it yourself:</p>
+            <div class="adjust">
+               <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">6</p>
+               <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">-</p>
+               <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">( -2 )</p>
+               <p style="font-weight: 300; font-size: 50px; padding: 0px 30px">=</p>
+               <input class="input" id="answer" oninput="getAns()" style="border: solid; border-radius: 5px">
+            </div>
+            <div class="adjust" style="margin: 0px 0px 20px 0px">
+               <p id="ans" style="margin: 0px"></p>
+            </div>
+            <hr style="border: 1px dashed #04b59d">
+            <br>
+            <div class="adjust">
+               <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">12</p>
+               <p style="font-weight: 700; font-size: 50px; padding: 0px 30px">-</p>
+               <p style="font-weight: 700; font-size: 50px; padding: 0px 20px">( -5 )</p>
+               <p style="font-weight: 300; font-size: 50px; padding: 0px 30px">=</p>
+               <input class="input" id="answer2" oninput="getAns2()" style="border: solid; border-radius: 5px">
+            </div>
+            <div class="adjust" style="margin: 0px 0px 20px 0px">
+               <p id="ans2" style="margin: 0px"></p>
+            </div>
+            <hr style="border: 1px dashed #04b59d">
+            <br>
+            <p>Hover over the cards to jog your memory of some important information.</p>
+            <div class="container_hover">
+               <section class="hover_slide_tainer">
+                  <button data-hover="...is counting to the left!">
+                     <div>Counting <br>Negative Numbers...</div>
+                  </button>
+               </section>
+            </div>
+            <div class="container_hover">
+               <section class="hover_slide_tainer">
+                  <button data-hover="...is the same as substracting">
+                     <div>Adding <br>
+                        Negative Numbers...
+                     </div>
+                  </button>
+               </section>
+            </div>
+            <div class="container_hover">
+               <section class="hover_slide_tainer">
+                  <button data-hover="...is the same as adding">
+                     <div>Subtracting<br>
+                        Negative Numbers...
+                     </div>
+                  </button>
+               </section>
+            </div>
          </div>
+         <br>
+         <br>
+         <br>
+         <!-- outside instruction div here -->
+         <div class="goto">
+            <a href="Teens_Lesson_alg.html" class="go-quiz" style="text-decoration: none;"> Next Lesson </a>
+         </div>
+         <br>
+         <br>
       </div>
-      <footer>
-      </footer>
-      <!-- JAVASCRIPT --------------------------------------------------->
-      <script>
-         var slideIndex = 1;
-         showSlides(slideIndex);
-         
-         function plusSlides(n) {
-           showSlides(slideIndex += n);
-         }
-         
-         function currentSlide(n) {
-           showSlides(slideIndex = n);
-         }
-         
-         function showSlides(n) {
-           var i;
-           var slides = document.getElementsByClassName("mySlides");
-           var dots = document.getElementsByClassName("dot");
-           if (n > slides.length) {slideIndex = 1}    
-           if (n < 1) {slideIndex = slides.length}
-           for (i = 0; i < slides.length; i++) {
-               slides[i].style.display = "none";  
-           }
-           for (i = 0; i < dots.length; i++) {
-               dots[i].className = dots[i].className.replace(" active", "");
-           }
-           slides[slideIndex-1].style.display = "block";  
-           dots[slideIndex-1].className += " active";
-         }
-      </script>
-      <script>
-         /* Correct answer */
-         function getAns() {
-         
-             var validation;
-         
-             var x = document.getElementById("answer");
-         
-             if (x.value == "8") {
-                 validation = "Nice Job!";
-                 x.style.borderColor = "green";
-             }
-             else{
-                 validation = "Try Again...";
-                 x.style.borderColor = "red";
-             }
-         
-             document.getElementById("ans").innerHTML = validation;
-             
-         }
-          
-        function getAns2() {
-         
-             var validation;
-         
-             var x = document.getElementById("answer2");
-         
-             if (x.value == "17") {
-                 validation = "Nice Job!";
-                 x.style.borderColor = "green";
-             }
-             else{
-                 validation = "Try Again...";
-                 x.style.borderColor = "red";
-             }
-         
-             document.getElementById("ans2").innerHTML = validation;
-             
-         }
-         
-        /////////////////////////////////////////////////////////
-        
-         function flip(event){
-         
-             var element = event.currentTarget;
-         
-             if (element.className === "card") {
-         
-                 if(element.style.transform == "rotateY(180deg)") {
-         
-                     element.style.transform = "rotateY(0deg)";
-             }
-             else {
-               element.style.transform = "rotateY(180deg)";
-             }
-           }
-         };
-         
-         /* Dropdown */
-         var dropdown = document.getElementsByClassName("drop2");
+   </div>
+   <footer>
+   </footer>
+   <!-- JAVASCRIPT --------------------------------------------------->
+   <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+         showSlides(slideIndex += n);
+      }
+
+      function currentSlide(n) {
+         showSlides(slideIndex = n);
+      }
+
+      function showSlides(n) {
          var i;
-         
-         for (i = 0; i < dropdown.length; i++) {
-           dropdown[i].addEventListener("click", function() {
-           this.classList.toggle("active");
-           var dropdownContent = this.nextElementSibling;
-           if (dropdownContent.style.display === "block") {
-           dropdownContent.style.display = "none";
-           } else {
-           dropdownContent.style.display = "block";
-           }
-           });
+         var slides = document.getElementsByClassName("mySlides");
+         var dots = document.getElementsByClassName("dot");
+         if (n > slides.length) { slideIndex = 1 }
+         if (n < 1) { slideIndex = slides.length }
+         for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
          }
-      </script>
-   </body>
+         for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+         }
+         slides[slideIndex - 1].style.display = "block";
+         dots[slideIndex - 1].className += " active";
+      }
+   </script>
+   <script>
+      /* Correct answer */
+      function getAns() {
+
+         var validation;
+
+         var x = document.getElementById("answer");
+
+         if (x.value == "8") {
+            validation = "Nice Job!";
+            x.style.borderColor = "green";
+         }
+         else {
+            validation = "Try Again...";
+            x.style.borderColor = "red";
+         }
+
+         document.getElementById("ans").innerHTML = validation;
+
+      }
+
+      function getAns2() {
+
+         var validation;
+
+         var x = document.getElementById("answer2");
+
+         if (x.value == "17") {
+            validation = "Nice Job!";
+            x.style.borderColor = "green";
+         }
+         else {
+            validation = "Try Again...";
+            x.style.borderColor = "red";
+         }
+
+         document.getElementById("ans2").innerHTML = validation;
+
+      }
+
+      /////////////////////////////////////////////////////////
+
+      function flip(event) {
+
+         var element = event.currentTarget;
+
+         if (element.className === "card") {
+
+            if (element.style.transform == "rotateY(180deg)") {
+
+               element.style.transform = "rotateY(0deg)";
+            }
+            else {
+               element.style.transform = "rotateY(180deg)";
+            }
+         }
+      };
+
+      /* Dropdown */
+      var dropdown = document.getElementsByClassName("drop2");
+      var i;
+
+      for (i = 0; i < dropdown.length; i++) {
+         dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+               dropdownContent.style.display = "none";
+            } else {
+               dropdownContent.style.display = "block";
+            }
+         });
+      }
+   </script>
+</body>
+
 </html>
