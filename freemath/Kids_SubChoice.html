@@ -1,294 +1,55 @@
 <html>
-<title>FreeMath.</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<style>
-    /* #B81229 -->dark red  #4d4557 -->dark  #29abe2 -->blue  #fbb03b -->yellow #04b59d -->green*/
-
-    body {
-        width: 100%;
-        height: 100%;
-        margin: 0px;
-        font-family: 'Quicksand', monospace;
-        background-color: whitesmoke;
-    }
-
-    /* header ******************************************************/
-
-    .nav {
-        background-color: #fbb03b;
-        /* nav text color below */
-        display: flex;
-        width: 100%;
-        /*            overflow: hidden;*/
-        /* or else fixed menu's dropdown doesnt show */
-        font-size: 16px;
-        /* if font change, mind the padding for h1 and .nav a */
-        position: fixed;
-        z-index: 5;
-        box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.2);
-    }
-
-    h1 {
-        margin: 0px;
-        padding: 2px 30px 0px;
-        text-align: center;
-    }
-
-    h1 a:hover {
-        background-color: rgba(0, 0, 0, 0) !important;
-        color: white !important;
-    }
-
-    .nav a,
-    .dropdown .drop {
-        font-size: inherit;
-        text-align: center;
-        text-decoration: none;
-        border: none;
-        outline: none;
-        color: white;
-        /* NAV TEXT COLOR HERE */
-        padding: 16px 16px 10px;
-        background-color: inherit;
-        font-family: inherit;
-        margin: 0;
-        transition: 0.5s;
-    }
-
-    .nav a:hover,
-    .dropdown:hover .drop {
-        background-color: white;
-        /* NAV-HOVER COLOR HERE */
-        color: black;
-    }
-
-    .drop-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 5;
-    }
-
-    .drop-content a {
-        float: none;
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-    }
-
-    .drop-content a:hover {
-        background-color: #cccccc;
-    }
-
-    .dropdown:hover .drop-content {
-        display: block;
-    }
-
-    .sidebar {
-        position: fixed;
-        top: 100px;
-        left: 15px;
-        background-color: #fbb03b;
-        width: 200px;
-        border-radius: 5px;
-        height: auto;
-        overflow: hidden;
-        height: 700px;
-    }
-
-    .sidebar a,
-    .drop2 {
-        padding: 6px 8px 6px 16px;
-        text-decoration: none;
-        font-size: 16px;
-        color: white;
-        display: block;
-        border: none;
-        background: none;
-        width: 100%;
-        text-align: left;
-        cursor: pointer;
-        outline: none;
-    }
-
-    .sidebar a:hover,
-    .drop2:hover {
-        display: block;
-        color: black;
-        text-decoration: none;
-        transition: 0.5s;
-        max-width: 100%;
-        background-color: white;
-    }
-
-    /* active dropdown button, pulled by javascript */
-    .active {
-        display: block;
-        color: black;
-        text-decoration: none;
-        transition: 0.5s;
-        max-width: 100%;
-        background-color: white;
-    }
-
-    .dropdown-content2 {
-        display: none;
-        background-color: #fbbf3b;
-        text-indent: 8px;
-    }
-
-
-    /* CONTENT **************************************************/
-
-    .content {
-        display: inline-block;
-        position: relative;
-        margin: 80px 30px 50px 100px;
-        align-content: center;
-        top: 25px;
-        right: 30px;
-        bottom: 50px;
-        left: 25px;
-        width: 80%;
-    }
-
-    .options {
-        margin-left: 15%;
-    }
-
-    .sub_opt {
-        text-align: center;
-        line-height: 30px;
-        font-size: 15pt;
-        padding: 36px 20px;
-        width: 200px;
-        display: inline-block;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        margin-right: 100px;
-        border-radius: 10px;
-        color: whitesmoke;
-        border: solid;
-        background-color: none;
-    }
-
-
-    /*FLIP BOXES*******************************/
-
-    .cube {
-        color: #ccc;
-        cursor: pointer;
-        font-family: 'Roboto', sans-serif;
-        transition: all 0.85s cubic-bezier(0.17, 0.67, 0.14, 0.93);
-        transform-style: preserve-3d;
-        transform-origin: 100% 50%;
-        width: 8em;
-        height: 4em;
-    }
-
-    /*Flip on hover*/
-    .cube:hover {
-        transform: rotateX(-90deg);
-    }
-
-    /*dimension of box*/
-    .side {
-        box-sizing: border-box;
-        position: absolute;
-        display: inline-block;
-        height: 4em;
-        width: 6.5em;
-        text-align: center;
-        padding-top: 1.5em;
-        border-radius: 5px;
-    }
-
-    .top {
-        background: orange;
-        font-size: 40px;
-        box-shadow: 5px 15px 25px #888888;
-        transform: rotateX(90deg) translate3d(0, 0, 2em);
-    }
-
-    .front {
-        background: white;
-        color: orange;
-        font-size: 40px;
-        box-shadow: 5px 12px 20px #888888;
-        transform: translate3d(0, 0, 2em);
-    }
-
-    #bar {
-        border: 3px solid orange;
-        border-radius: 5px;
-        animation: colour 3s;
-    }
-
-    @keyframes colour {
-        20% {
-            border-color: firebrick;
-            width: 25%;
+<head>
+    <title>Kids - FreeMath.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="freemath.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        :root {
+            --main: #fbb03b;
+            --mainPale: #fbbf3b;
+            --bar: #B81229;
         }
-
-        100% {
-            border-color: orange;
-            width: 100%;
-        }
-    }
-</style>
+    </style>
+</head>
 
 <body>
-
-    <head>
-
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet">
-
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <div class="nav">
-            <h1><a href="Home.html">FreeMath</a></h1>
-            <a href="Home.html">Home</a>
-            <div class="dropdown">
-                <button class="drop">Children <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="drop-content">
-                    <a href="Kids_SubChoice.html">All Subjects</a>
-                    <a href="Kids_Quiz.html">Quiz</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="drop">Teens <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="drop-content">
-                    <a href="Teens_SubChoice.html">All Subjects</a>
-                    <a href="Teens_Quiz.html">Quiz</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="drop">Adults <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="drop-content">
-                    <a href="Adults_SubChoice.html">All Subjects</a>
-                    <a href="Adults_Quiz.html">Quiz</a>
-                </div>
+    <div class="nav">
+        <h1><a href="Home.html">FreeMath</a></h1>
+        <a href="Home.html">Home</a>
+        <div class="dropdown">
+            <button class="drop">Kids <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="drop-content">
+                <a href="Kids_SubChoice.html">All Subjects</a>
+                <a href="Kids_Quiz.html">Quiz</a>
             </div>
         </div>
-    </head>
+        <div class="dropdown">
+            <button class="drop">Teens <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="drop-content">
+                <a href="Teens_SubChoice.html">All Subjects</a>
+                <a href="Teens_Quiz.html">Quiz</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="drop">Adults <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="drop-content">
+                <a href="Adults_SubChoice.html">All Subjects</a>
+                <a href="Adults_Quiz.html">Quiz</a>
+            </div>
+        </div>
+    </div>
 
     <div class="sidebar">
-        <br>
         <a href="Home.html">Home</a>
-        <button class="drop2">Children
+        <button class="drop2">Kids
             <i class="fa fa-caret-down" style="float: right; padding-right: 8px;"></i>
         </button>
         <div class="dropdown-content2">
@@ -323,51 +84,34 @@
         <br>
     </div>
 
-
     <div class="subject-border">
         <div class="content">
+            <h2>Kids' subjects</h2>
+            <p>Pick a topic to begin!</p>
+            <hr id="bar">
             <div class="options">
-                <h2>Childrens' subjects</h2>
-                <p>Pick a topic to begin!</p>
-                <hr id="bar">
                 <div class="sub_opt">
-                    <div class="scene">
-                        <div class="cube">
-                            <a href="Kids_Lesson_add.html" class="side top"
-                                style="text-decoration: none; color: white;">Addition</a>
-                            <span class="side front"><i class="fa fa-plus"></i></span>
-                        </div>
+                    <div class="cube">
+                        <a href="Kids_Lesson_add.html" class="side top">Addition</a>
+                        <span class="side"><i class="fa fa-plus"></i></span>
                     </div>
                 </div>
                 <div class="sub_opt">
-                    <div class="scene">
-                        <div class="cube">
-                            <a href="Kids_Lesson_sub.html" class="side top"
-                                style="text-decoration: none; color: white;">Subtraction</a>
-                            <span class="side front"><i class="fa fa-minus"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="sub_opt">
-                    <div class="scene">
-                        <div class="cube">
-                            <a href="Kids_Lesson_mult.html" class="side top"
-                                style="text-decoration: none; color: white;">Multiplication</a>
-                            <span class="side front"><i class="fa fa-times"></i></span>
-                        </div>
+                    <div class="cube">
+                        <a href="Kids_Lesson_sub.html" class="side top">Subtraction</a>
+                        <span class="side"><i class="fa fa-minus"></i></span>
                     </div>
                 </div>
                 <div class="sub_opt">
-                    <div class="scene">
-                        <div class="cube">
-                            <a href="Kids_Lesson_div.html" class="side top"
-                                style="text-decoration: none; color: white;">Division</a>
-                            <span class="side front"><i class="fa fa-divide"></i></span>
-                        </div>
+                    <div class="cube">
+                        <a href="Kids_Lesson_mult.html" class="side top">Multiplication</a>
+                        <span class="side"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+                <div class="sub_opt">
+                    <div class="cube">
+                        <a href="Kids_Lesson_div.html" class="side top">Division</a>
+                        <span class="side"><i class="fa fa-divide"></i></span>
                     </div>
                 </div>
             </div>

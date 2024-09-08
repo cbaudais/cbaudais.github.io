@@ -12,7 +12,7 @@
 
 body {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     margin: 0px;
     font-family: 'Quicksand', monospace;
     background-color: whitesmoke;
@@ -21,7 +21,7 @@ body {
 
 /* header ******************************************************/
 .nav {
-    background-color: var(--mainPale);
+    background-color: var(--main);
     /* nav text color below */
     display: flex;
     width: 100%;
@@ -146,71 +146,25 @@ h1 a:hover {
     text-indent: 8px;
 }
 
-/*FLIP BOXES*******************************/
-
-.cube {
-    color: #ccc;
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-    transition: all 0.85s cubic-bezier(0.17, 0.67, 0.14, 0.93);
-    transform-style: preserve-3d;
-    transform-origin: 100% 50%;
-    width: 8em;
-    height: 4em;
-}
-
-/*Flip on hover*/
-.cube:hover {
-    transform: rotateX(-90deg);
-}
-
-/*dimension of box*/
-.side {
-    box-sizing: border-box;
-    position: absolute;
-    display: inline-block;
-    height: 4em;
-    width: 6.5em;
-    text-align: center;
-    padding-top: 1.5em;
-    border-radius: 5px;
-}
-
-.top {
-    background: #04b59d;
-    font-size: 40px;
-    box-shadow: 5px 15px 25px #888888;
-    transform: rotateX(90deg) translate3d(0, 0, 2em);
-}
-
-.front {
-    background: white;
-    color: #04b59d;
-    font-size: 40px;
-    box-shadow: 5px 12px 20px #888888;
-    transform: translate3d(0, 0, 2em);
-}
-
 #bar {
-    border: 3px solid #04b59d;
+    border: 3px solid var(--main);
     border-radius: 5px;
     animation: colour 3s;
 }
 
 @keyframes colour {
     20% {
-        border-color: #00DFFC;
+        border-color: var(--bar);
         width: 25%;
     }
 
     100% {
-        border-color: #04b59d;
+        border-color: var(--main);
         width: 100%;
     }
 }
 
 /* CONTENT **************************************************/
-
 .content {
     /* display: inline-block; */
     /* position: relative; */
@@ -223,7 +177,8 @@ h1 a:hover {
 }
 
 .options {
-    margin-left: 15%;
+    display: inline-grid;
+    grid-template-columns: 1fr auto;
 }
 
 .sub_opt {
@@ -233,19 +188,62 @@ h1 a:hover {
     padding: 36px 20px;
     width: 200px;
     display: inline-block;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-right: 100px;
+    margin: 50px;
     border-radius: 10px;
     color: whitesmoke;
     border: solid;
-    background-color: none;
+    /* background-color: none; */
+}
+
+/*FLIP BOXES*******************************/
+.cube {
+    color: #ccc;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.85s cubic-bezier(0.17, 0.67, 0.14, 0.93);
+    transform-style: preserve-3d;
+    /* transform-origin: 100% 50%; */
+    width: 0;
+    height: 4em;
+}
+
+/*Flip on hover*/
+.cube:hover {
+    transform: rotateX(-90deg);
+}
+
+/*dimension of box*/
+.side,
+.top {
+    box-sizing: border-box;
+    position: absolute;
+    display: inline-block;
+    height: 4em;
+    width: 6.5em;
+    text-align: center;
+    padding-top: 1.5em;
+    border-radius: 5px;
+    background: white;
+    text-decoration: none;
+    font-size: 40px;
+    box-shadow: 0 5px 20px rgba(105, 108, 109, .5), 0 0 8px 5px rgba(105, 108, 109, .1) inset;
+}
+
+.side {
+    transform: translate3d(0, 0, 2em);
+    color: var(--main);
+}
+
+.top {
+    background: var(--main);
+    color: white;
+    transform: rotateX(90deg) translate3d(0, 0, 2em);
 }
 
 h2 {
     margin: auto;
     font-size: 30px;
-    text-align: left;
+    /* text-align: left; */
 }
 
 .adjust {
@@ -385,8 +383,7 @@ h2 {
 
 .front {
     transform: rotate(0deg);
-    background-color: orange;
-    ;
+    background-color: var(--main);
 }
 
 .front:hover {
@@ -398,12 +395,56 @@ h2 {
     background-color: red;
 }
 
-/*        GO TO QUIZ **************************************/
+/*        GO TO LESSON **************************************/
+.get_started {
+    background-color: var(--main);
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding: 20px 5px;
+    font-size: 16px;
+    width: 150px;
+    /* need fixed width for later text-indent, the hover stuff */
+    overflow: hidden;
+    transition: all 0.2s linear 0s;
+}
 
+.get_started:after {
+    content: "→";
+    /* ouuuuu smart! */
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 100%;
+    background-color: rgba(77, 69, 87, 0.2);
+    border-radius: 0px 6px 6px 0px;
+    transition: all 0.2s linear 0s;
+    text-align: center;
+}
+
+.get_started:hover {
+    text-indent: -30px;
+    /* push to left */
+}
+
+.get_started:hover:after {
+    right: 0;
+    text-indent: 0px;
+}
+
+/*        GO TO QUIZ **************************************/
 .go {
     position: relative;
-    right: 100px;
-    bottom: 0;
+    /* right: 100px; */
+    /* bottom: 0; */
     /* bottom: 20px; */
     /* pay attention, float: right is there */
     font-size: 16px;
@@ -418,9 +459,10 @@ h2 {
     outline: none;
     padding: 20px 60px;
     text-decoration: none;
-    float: right;
+    /* float: right; */
     display: inline-block;
     text-align: center;
+    text-decoration: none;
 }
 
 .go:hover {
@@ -446,6 +488,178 @@ h2 {
 .go:hover::after {
     animation: none;
     display: none;
+}
+
+/*Questions*/
+.question_container {
+    position: relative;
+    /*            border: 1px solid aqua;*/
+    /*            padding-top:10%;*/
+}
+
+img {
+    position: relative;
+    display: inline-flex;
+}
+
+/* the output scores*/
+input[type=text] {
+    width: 10%;
+    border: none;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+/* The container */
+.container {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+}
+
+/* Hide default  button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 1px solid #29abe2;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+    height: 26px;
+    width: 26px;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked~.checkmark {
+    background-color: #29abe2;
+    box-shadow: inset 0 0 10px white;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.result {
+    border: none;
+    background-color: var(--main);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: topbouncy 5s infinite linear;
+    position: relative;
+    margin: 0px 5px;
+}
+
+.result:hover {
+    background-color: #fcc469;
+}
+
+
+.mySlides {
+    position: relative;
+    display: none;
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+/* Slideshow container contains pagination */
+.slideshow-container {
+    max-width: 1000px;
+    height: 500px;
+    position: relative;
+    margin: auto;
+    text-align: initial;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: #B81229;
+    font-weight: bold;
+    font-size: 25px;
+    transition: 0.5s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    animation: rightbouncy 5s;
+    animation-iteration-count: 3;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* left: auto; */
+    color: white;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+
+    .prev,
+    .next,
+    .text {
+        font-size: 11px
+    }
+}
+
+.timer {
+    position: relative;
+    text-align: center;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 50px;
+    font-size: 20px;
+    background-color: white;
 }
 
 /*        ANIMATIONS *****************************************/
@@ -478,11 +692,64 @@ h2 {
     }
 }
 
+@keyframes topbouncy {
+    0% {
+        top: 0em
+    }
+
+    20% {
+        top: 0em
+    }
+
+    33% {
+        top: -0.9em
+    }
+
+    46% {
+        top: 0em
+    }
+
+    50% {
+        top: -0.4em
+    }
+
+    60% {
+        top: 0em
+    }
+
+    100% {
+        top: 0em;
+    }
+}
+
+@keyframes rightbouncy {
+    25% {
+        right: 0em
+    }
+
+    50% {
+        right: -0.9em
+    }
+
+    75% {
+        right: 0px;
+        font-size: 30px;
+    }
+
+    90% {
+        right: -0.4em
+    }
+
+    100% {
+        right: 0em;
+    }
+}
+
 /****************************************************/
 
 footer {
-    /* position: relative;
-    display: block; */
+    position: relative;
+    display: block;
     width: 100%;
     height: 120px;
     bottom: 0;
