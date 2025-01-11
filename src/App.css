@@ -43,10 +43,12 @@
   }
 }
 
-.card {
-  padding: 2em;
+a {
+  color: #FD0D60;
+  text-decoration: none;
+  transition: all .2s ease-out;
 }
 
-.read-the-docs {
-  color: #888;
-}
+/* p {
+  font-size: 20px;
+} */
