@@ -1,192 +1,191 @@
 <!DOCTYPE html>
 <html>
 
-<body>
+<head>
+    <title>FreeMath</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="freemath.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<style>
+    .content {
+        display: block;
+        position: absolute;
+        margin: 100px 50px 80px 200px;
+    }
 
-    <head>
-        <title>FreeMath</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="freemath.css" rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Quicksand:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    /*Parallax****************************************/
 
-    </head>
-    <style>
-        .content {
-            display: block;
-            position: absolute;
-            margin: 100px 50px 80px 200px;
-        }
+    /* Tiny reset thingy */
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+    }
 
-        /*Parallax****************************************/
-
-        /* Tiny reset thingy */
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-        }
-
-        .wrapper {
-            /* The height needs to be set to a fixed value for the effect to work.
+    .wrapper {
+        /* The height needs to be set to a fixed value for the effect to work.
              * 100vh is the full height of the viewport. */
-            height: 100vh;
-            /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
-            overflow-x: hidden;
-            /* Enable scrolling on the page. */
-            overflow-y: auto;
-            /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
-            perspective: 2px;
-        }
+        height: 100vh;
+        /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
+        overflow-x: hidden;
+        /* Enable scrolling on the page. */
+        overflow-y: auto;
+        /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
+        perspective: 2px;
+    }
 
-        .section {
-            /* For Kids to be absolutely positioned relative to the parent. */
-            position: relative;
-            /* The height of the container. Must be set, but it doesn't really matter what the value is. */
-            height: 72vh;
-            /* For text formatting. */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: black;
-            margin: auto 50px;
-        }
+    .section {
+        /* For Kids to be absolutely positioned relative to the parent. */
+        position: relative;
+        /* The height of the container. Must be set, but it doesn't really matter what the value is. */
+        height: 72vh;
+        /* For text formatting. */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+        margin: auto 50px;
+    }
 
-        .parallax::after {
-            /* Display and position the pseudo-element */
-            content: " ";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            /* Move the pseudo-element back away from the camera,
+    .parallax::after {
+        /* Display and position the pseudo-element */
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        /* Move the pseudo-element back away from the camera,
              * then scale it back up to fill the viewport.
              * Because the pseudo-element is further away, it appears to move more slowly, like in real life. */
-            transform: translateZ(-1px) scale(1.5);
-            /* Force the background image to fill the whole element. */
-            background-size: 100%;
-            /* Keep the image from overlapping sibling elements. */
-            z-index: -1;
-        }
+        transform: translateZ(-1px) scale(1.5);
+        /* Force the background image to fill the whole element. */
+        background-size: 100%;
+        /* Keep the image from overlapping sibling elements. */
+        z-index: -1;
+    }
 
-        /* The styling for the static div. */
-        .static {
-            background-color: white;
-            height: 350px;
-        }
+    /* The styling for the static div. */
+    .static {
+        background-color: white;
+        height: 350px;
+    }
 
-        /* Sets the actual background images to adorable kitties. This part is crucial. */
+    /* Sets the actual background images to adorable kitties. This part is crucial. */
 
 
-        .bg1::after {
-            background-image: url(images/Banner%20test.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-            display: block;
-        }
+    .bg1::after {
+        background-image: url(images/Banner%20test.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: block;
+    }
 
-        .bg2::after {
-            background-size: 100%;
-            background-image: url();
-            background-size: cover;
-            background-repeat: no-repeat;
-            line-height: 500px;
-            padding: 0;
-            margin: 0;
-        }
+    .bg2::after {
+        background-size: 100%;
+        background-image: url();
+        background-size: cover;
+        background-repeat: no-repeat;
+        line-height: 500px;
+        padding: 0;
+        margin: 0;
+    }
 
-        .bg3::after {
-            background-size: 100%;
-            background-image: url(images/Banner2.png);
-            background-size: cover;
-            background-repeat: no-repeat;
-            padding: 0;
-            margin: 0;
-        }
+    .bg3::after {
+        background-size: 100%;
+        background-image: url(images/Banner2.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 0;
+        margin: 0;
+    }
 
-        .bg4::after {
-            background-image: url();
-            background-size: contain;
-            background-repeat: no-repeat;
-            display: block;
-        }
+    .bg4::after {
+        background-image: url();
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: block;
+    }
 
-        .bg5::after {
-            background-image: url(images/Banner2.png);
-            background-size: cover;
-            line-height: 10px;
-            background-repeat: no-repeat;
-            display: block;
-            margin-top: 200px;
-        }
+    .bg5::after {
+        background-image: url(images/Banner2.png);
+        background-size: cover;
+        line-height: 10px;
+        background-repeat: no-repeat;
+        display: block;
+        margin-top: 200px;
+    }
 
-        .kids,
-        .teens,
-        .adults {
-            margin: auto 45px;
-            height: 335px;
-            padding: 60px 30px 0px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border: 2px solid var(--kids);
-            width: 100%;
-        }
+    .kids,
+    .teens,
+    .adults {
+        margin: auto 45px;
+        height: 335px;
+        padding: 60px 30px 0px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 2px solid var(--kids);
+        width: 100%;
+    }
 
-        .title_1 {
-            font-size: 100pt;
-            text-align: center;
-            line-height: 30px;
-        }
+    .title_1 {
+        font-size: 100pt;
+        text-align: center;
+        line-height: 30px;
+    }
 
-        .p1 {
-            font-size: 30pt;
-        }
+    .p1 {
+        font-size: 30pt;
+    }
 
-        .ages {
-            display: inline;
-        }
+    .ages {
+        display: inline;
+    }
 
-        img {
-            border-radius: 5px;
-        }
+    img {
+        border-radius: 5px;
+    }
 
-        .kids h2,
-        .adults h2 {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, var(--kids) 50%);
-            background-position: -0%;
-            background-size: 200% auto;
-            color: #222;
-            text-decoration: none;
-            transition: 0.5s;
-        }
+    .kids h2,
+    .adults h2 {
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, var(--kids) 50%);
+        background-position: -0%;
+        background-size: 200% auto;
+        color: #222;
+        text-decoration: none;
+        transition: 0.5s;
+    }
 
-        .adults h2 {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #B81229 50%);
-        }
+    .adults h2 {
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #B81229 50%);
+    }
 
-        .teens h2 {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #04b59d 50%);
-            background-position: -0%;
-            background-size: 200% auto;
-            color: #222;
-            text-decoration: none;
-            transition: 0.5s;
-        }
+    .teens h2 {
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #04b59d 50%);
+        background-position: -0%;
+        background-size: 200% auto;
+        color: #222;
+        text-decoration: none;
+        transition: 0.5s;
+    }
 
-        h2:hover {
-            background-position: -50%;
-        }
+    h2:hover {
+        background-position: -50%;
+    }
 
-        /*footer*/
-        footer {
-            padding: 20px;
-            background-color: #4d4557;
-            color: black;
-            z-index: 5;
-        }
-    </style>
+    /*footer*/
+    footer {
+        padding: 20px;
+        background-color: #4d4557;
+        color: black;
+        z-index: 5;
+    }
+</style>
+
+<body>
     <div class="nav">
         <h1><a href="Home.html">FreeMath</a></h1>
         <a href="Home.html">Home</a>
