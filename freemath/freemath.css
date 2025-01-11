@@ -475,7 +475,8 @@ h2 {
 }
 
 .get_started:after {
-    content: "→";
+    font-family: 'FontAwesome';
+    content: "\f061";
     /* ouuuuu smart! */
     font-size: 20px;
     display: flex;
