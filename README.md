@@ -1,6 +1,6 @@
 # cbaudais.github.io
 
-Host for all websites I've coded or created, mostly school assignements. Images may be copyrighted.
+Host for all websites I've coded or created. Images may be copyrighted.
 
 [cbaudais.github.io](https://cbaudais.github.io/)
 
