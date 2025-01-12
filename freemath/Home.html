@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
     <title>FreeMath</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="freemath.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Quicksand:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-</head>
-<style>
+    <link href="freemath.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  </head>
+  <style>
     .content {
-        display: block;
-        position: absolute;
-        margin: 100px 50px 80px 200px;
+      display: block;
+      position: absolute;
+      margin: 100px 50px 80px 200px;
     }
 
     /*Parallax****************************************/
@@ -22,254 +21,256 @@
     /* Tiny reset thingy */
     body,
     html {
-        margin: 0;
-        padding: 0;
+      margin: 0;
+      padding: 0;
     }
 
     .wrapper {
-        /* The height needs to be set to a fixed value for the effect to work.
+      /* The height needs to be set to a fixed value for the effect to work.
              * 100vh is the full height of the viewport. */
-        height: 100vh;
-        /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
-        overflow-x: hidden;
-        /* Enable scrolling on the page. */
-        overflow-y: auto;
-        /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
-        perspective: 2px;
+      height: 100vh;
+      /* The scaling of the images would add a horizontal scrollbar, so disable x overflow. */
+      overflow-x: hidden;
+      /* Enable scrolling on the page. */
+      overflow-y: auto;
+      /* Set the perspective to 2px. This is essentailly the simulated distance from the viewport to transformed objects.*/
+      perspective: 2px;
     }
 
     .section {
-        /* For Kids to be absolutely positioned relative to the parent. */
-        position: relative;
-        /* The height of the container. Must be set, but it doesn't really matter what the value is. */
-        height: 72vh;
-        /* For text formatting. */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: black;
-        margin: auto 50px;
+      /* For Kids to be absolutely positioned relative to the parent. */
+      position: relative;
+      /* The height of the container. Must be set, but it doesn't really matter what the value is. */
+      height: 72vh;
+      /* For text formatting. */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+      margin: auto 50px;
     }
 
     .parallax::after {
-        /* Display and position the pseudo-element */
-        content: " ";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        /* Move the pseudo-element back away from the camera,
+      /* Display and position the pseudo-element */
+      content: " ";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      /* Move the pseudo-element back away from the camera,
              * then scale it back up to fill the viewport.
              * Because the pseudo-element is further away, it appears to move more slowly, like in real life. */
-        transform: translateZ(-1px) scale(1.5);
-        /* Force the background image to fill the whole element. */
-        background-size: 100%;
-        /* Keep the image from overlapping sibling elements. */
-        z-index: -1;
+      transform: translateZ(-1px) scale(1.5);
+      /* Force the background image to fill the whole element. */
+      background-size: 100%;
+      /* Keep the image from overlapping sibling elements. */
+      z-index: -1;
     }
 
     /* The styling for the static div. */
     .static {
-        background-color: white;
-        height: 350px;
+      background-color: white;
+      height: 350px;
     }
 
     /* Sets the actual background images to adorable kitties. This part is crucial. */
 
-
     .bg1::after {
-        background-image: url(images/Banner%20test.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        display: block;
+      background-image: url(images/Banner%20test.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: block;
     }
 
     .bg2::after {
-        background-size: 100%;
-        background-image: url();
-        background-size: cover;
-        background-repeat: no-repeat;
-        line-height: 500px;
-        padding: 0;
-        margin: 0;
+      background-size: 100%;
+      background-image: url();
+      background-size: cover;
+      background-repeat: no-repeat;
+      line-height: 500px;
+      padding: 0;
+      margin: 0;
     }
 
     .bg3::after {
-        background-size: 100%;
-        background-image: url(images/Banner2.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        padding: 0;
-        margin: 0;
+      background-size: 100%;
+      background-image: url(images/Banner2.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 0;
+      margin: 0;
     }
 
     .bg4::after {
-        background-image: url();
-        background-size: contain;
-        background-repeat: no-repeat;
-        display: block;
+      background-image: url();
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: block;
     }
 
     .bg5::after {
-        background-image: url(images/Banner2.png);
-        background-size: cover;
-        line-height: 10px;
-        background-repeat: no-repeat;
-        display: block;
-        margin-top: 200px;
+      background-image: url(images/Banner2.png);
+      background-size: cover;
+      line-height: 10px;
+      background-repeat: no-repeat;
+      display: block;
+      margin-top: 200px;
     }
 
     .kids,
     .teens,
     .adults {
-        margin: auto 45px;
-        height: 335px;
-        padding: 60px 30px 0px;
-        background-color: rgba(255, 255, 255, 0.8);
-        border: 2px solid var(--kids);
-        width: 100%;
+      margin: auto 45px;
+      height: 335px;
+      padding: 60px 30px 0px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 2px solid var(--kids);
+      width: 100%;
     }
 
     .title_1 {
-        font-size: 100pt;
-        text-align: center;
-        line-height: 30px;
+      font-size: 100pt;
+      text-align: center;
+      line-height: 30px;
     }
 
     .p1 {
-        font-size: 30pt;
+      font-size: 30pt;
     }
 
     .ages {
-        display: inline;
+      display: inline;
     }
 
     img {
-        border-radius: 5px;
+      border-radius: 5px;
     }
 
     .kids h2,
     .adults h2 {
-        background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, var(--kids) 50%);
-        background-position: -0%;
-        background-size: 200% auto;
-        color: #222;
-        text-decoration: none;
-        transition: 0.5s;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, var(--kids) 50%);
+      background-position: -0%;
+      background-size: 200% auto;
+      color: #222;
+      text-decoration: none;
+      transition: 0.5s;
     }
 
     .adults h2 {
-        background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #B81229 50%);
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #b81229 50%);
     }
 
     .teens h2 {
-        background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #04b59d 50%);
-        background-position: -0%;
-        background-size: 200% auto;
-        color: #222;
-        text-decoration: none;
-        transition: 0.5s;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 50%, #04b59d 50%);
+      background-position: -0%;
+      background-size: 200% auto;
+      color: #222;
+      text-decoration: none;
+      transition: 0.5s;
     }
 
     h2:hover {
-        background-position: -50%;
+      background-position: -50%;
     }
 
     /*footer*/
     footer {
-        padding: 20px;
-        background-color: #4d4557;
-        color: black;
-        z-index: 5;
+      padding: 20px;
+      background-color: #4d4557;
+      color: black;
+      z-index: 5;
     }
-</style>
+  </style>
 
-<body>
+  <body>
     <div class="nav">
-        <h1><a href="Home.html">FreeMath</a></h1>
-        <a href="Home.html">Home</a>
-        <div class="dropdown">
-            <button class="drop">Kids <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="drop-content">
-                <a href="Kids_SubChoice.html">All Subjects</a>
-                <a href="Kids_Quiz.html">Quiz</a>
-            </div>
+      <h1><a href="Home.html">FreeMath</a></h1>
+      <a href="Home.html">Home</a>
+      <div class="dropdown">
+        <button class="drop">Kids <i class="fa fa-caret-down"></i></button>
+        <div class="drop-content">
+          <a href="Kids_SubChoice.html">All Subjects</a>
+          <a href="Kids_Quiz.html">Quiz</a>
         </div>
-        <div class="dropdown">
-            <button class="drop">Teens <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="drop-content">
-                <a href="Teens_SubChoice.html">All Subjects</a>
-                <a href="Teens_Quiz.html">Quiz</a>
-            </div>
+      </div>
+      <div class="dropdown">
+        <button class="drop">Teens <i class="fa fa-caret-down"></i></button>
+        <div class="drop-content">
+          <a href="Teens_SubChoice.html">All Subjects</a>
+          <a href="Teens_Quiz.html">Quiz</a>
         </div>
-        <div class="dropdown">
-            <button class="drop">Adults <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="drop-content">
-                <a href="Adults_SubChoice.html">All Subjects</a>
-                <a href="Adults_Quiz.html">Quiz</a>
-            </div>
+      </div>
+      <div class="dropdown">
+        <button class="drop">Adults <i class="fa fa-caret-down"></i></button>
+        <div class="drop-content">
+          <a href="Adults_SubChoice.html">All Subjects</a>
+          <a href="Adults_Quiz.html">Quiz</a>
         </div>
+      </div>
     </div>
 
     <main class="wrapper">
-        <section class="section parallax bg1" style="height: 90vh">
-            <h1 class="title_1"><br>FreeMath.
-                <p class="p1" style="text-transform: uppercase;"><br> Quick, fun math~!</p>
-            </h1>
+      <section class="section parallax bg1" style="height: 90vh">
+        <h1 class="title_1">
+          <br />FreeMath.
+          <p class="p1" style="text-transform: uppercase">
+            <br />
+            Quick, fun math~!
+          </p>
+        </h1>
+      </section>
+
+      <div class="ages">
+        <section class="section parallax bg2">
+          <img src="images/Kids.jpg" style="height: 400px; width: auto; box-shadow: 20px 20px 25px grey" />
+          <div class="kids" style="border: 2px solid #fbb03b">
+            <h2>Kids</h2>
+            <p class="p4">
+              Hello there! Welcome to FreeMath! In this section, you will learn about:<br />
+              Addition, Subtraction, Multiplication, and Division!
+            </p>
+            <br />
+            <a href="Kids_SubChoice.html" class="get_started" style="background-color: #fbb03b">Get Started</a>
+          </div>
         </section>
 
-        <div class="ages">
-            <section class="section parallax bg2">
-                <img src="images/Kids.jpg" style="height:400px; width: auto; box-shadow: 20px 20px 25px grey;">
-                <div class="kids" style="border: 2px solid #fbb03b;">
-                    <h2>Kids</h2>
-                    <p class="p4"> Hello there! Welcome to FreeMath! In this section, you will learn about:<br>
-                        Addition, Subtraction, Multiplication, and Division! </p>
-                    <br>
-                    <a href="Kids_SubChoice.html" class="get_started" style="background-color: #fbb03b;">Get
-                        Started</a>
-                </div>
-            </section>
+        <section class="section parallax bg3">
+          <div class="teens" style="border: 2px solid #04b59d">
+            <h2>Teens</h2>
+            <p class="p4">
+              Hi there! Welcome to FreeMath! In this section, you will learn about:<br />
+              Negative Numbers, Functions, Algebra, and Factorization!
+            </p>
+            <br />
+            <a href="Teens_SubChoice.html" class="get_started" style="background-color: #04b59d">Get Started</a>
+          </div>
+          <img src="images/Teens.jpg" style="height: 400px; width: auto; box-shadow: 20px 20px 25px grey" />
+        </section>
 
-            <section class="section parallax bg3">
-                <div class="teens" style="border: 2px solid #04b59d">
-                    <h2>Teens</h2>
-                    <p class="p4"> Hi there! Welcome to FreeMath! In this section, you will learn about:<br> Negative
-                        Numbers, Functions, Algebra, and Factorization! </p>
-                    <br>
-                    <a href="Teens_SubChoice.html" class="get_started" style="background-color: #04b59d;">Get
-                        Started</a>
-                </div>
-                <img src="images/Teens.jpg" style="height:400px; width: auto; box-shadow: 20px 20px 25px grey;">
-            </section>
+        <section class="section parallax bg5">
+          <img src="images/Adults.jpg" style="height: 400px; width: auto; box-shadow: 20px 20px 25px grey" />
+          <div class="adults" style="border: 2px solid #b81229">
+            <h2>Adults</h2>
+            <p class="p4">
+              Welcome to FreeMath! In this section, you will learn about:<br />
+              Calculus, Limits, and Derivatives!
+            </p>
+            <br />
+            <a href="Adults_SubChoice.html" class="get_started" style="background-color: #b81229">Get Started</a>
+          </div>
+          <br />
+        </section>
 
-            <section class="section parallax bg5">
-                <img src="images/Adults.jpg" style="height:400px; width: auto; box-shadow: 20px 20px 25px grey;">
-                <div class="adults" style="border: 2px solid #B81229;">
-                    <h2>Adults</h2>
-                    <p class="p4"> Welcome to FreeMath! In this section, you will learn about:<br> Calculus, Limits, and
-                        Derivatives! </p>
-                    <br>
-                    <a href="Adults_SubChoice.html" class="get_started" style="background-color: #B81229;">Get
-                        Started</a>
-                </div>
-                <br>
-            </section>
-
-            <footer>
-                <p style="font-weight: 100; color: white;">Freemath (c) <br><br>
-                    <a href="#" style="text-decoration: none; color: inherit">Home</a> -
-                    <a href="#" style="text-decoration: none; color: inherit">Kids</a> -
-                    <a href="#" style="text-decoration: none; color: inherit">Teens</a> -
-                    <a href="#" style="text-decoration: none; color: inherit">Adults</a>
-                </p>
-            </footer>
-        </div>
+        <footer>
+          <p style="font-weight: 100; color: white">
+            Freemath (c) <br /><br />
+            <a href="#" style="text-decoration: none; color: inherit">Home</a> - <a href="#" style="text-decoration: none; color: inherit">Kids</a> -
+            <a href="#" style="text-decoration: none; color: inherit">Teens</a> -
+            <a href="#" style="text-decoration: none; color: inherit">Adults</a>
+          </p>
+        </footer>
+      </div>
     </main>
-</body>
-
+  </body>
 </html>
