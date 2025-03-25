@@ -3,98 +3,186 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
     <title>cbaudais.github.io</title>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js" defer></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <script type="text/javascript" src="fancybox.js" defer></script>
     <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="script.js" async></script>
   </head>
   <body>
-    <main>
-      <div id="header">
+    <header>
+      <a href="https://cbaudais.github.io/" id="header">
         <img src="assets/favicon.ico" class="logo-effect" />
         <h1>cbaudais.github.io</h1>
-      </div>
-      <p><a href="https://cbaudais.github.io/">cbaudais.github.io</a></p>
-      <ul>
-        <li>
-          <b>Art Portfolio: </b><a href="https://christinabaudais.com/" target="_blank">christinabaudais.com</a>
-          <ul>
-            <li>Personal portfolio website, made using static site generator (SSG) Eleventy (11ty) / Node.js; coded in Nunjucks, Javascript, HTML and CSS.</li>
-          </ul>
-        </li>
-        <br />
-        <li>
-          <b>Canadian Parents for French - National Website <i>(professional work)</i>: </b><a rel="nofollow ugc" href="https://cpf.ca/" target="_blank">CPF National - cpf.ca</a>
-          <ul>
-            <li>
-              <i
-                ><b>* Changes currently still in staging/dev mode. Please <a href="mailto:cbwbaudais@outlook.com" target="_blank">contact me</a> if would like to see previews.</b></i
-              >
-            </li>
-            <li>Made with WordPress and Elementor. Done for <i>Canadian Parents for French - National</i> as part of website refresh.</li>
-            <li>Created page layouts while implementing an already made design by another vendor.</li>
-            <li>Saved page snapshots:</li>
-          </ul>
-          <div class="flex-container">
-            <div class="flex-clm">
-              <a href="/assets/files/CPF Giving Tuesday Campaign - Canadian Parents for French - National - cpf.ca.jpg" data-fancybox="cpf" class="fancyboxImg">
-                <img src="/assets/files/CPF Giving Tuesday Campaign - Canadian Parents for French - National - cpf.ca.jpg" />
-                <p>CPF Giving Tuesday Campaign</p>
-              </a>
+      </a>
+    </header>
+    <div id="themeToggle">
+      <input type="checkbox" class="checkbox" id="checkbox" data-theme-toggle />
+      <label for="checkbox" id="checkbox-label" class="soft-shadow">
+        <svg width="24" height="24" id="sun-icon">
+          <circle cx="12" cy="12" r="5" fill="currentColor"></circle>
+          <line id="ray" stroke="currentColor" stroke-width="2" stroke-linecap="round" x1="12" y1="1" x2="12" y2="4"></line>
+          <use href="#ray" transform="rotate(45 12 12)" />
+          <use href="#ray" transform="rotate(90 12 12)" />
+          <use href="#ray" transform="rotate(135 12 12)" />
+          <use href="#ray" transform="rotate(180 12 12)" />
+          <use href="#ray" transform="rotate(225 12 12)" />
+          <use href="#ray" transform="rotate(270 12 12)" />
+          <use href="#ray" transform="rotate(315 12 12)" />
+        </svg>
+        <!-- d command: Move coord; Arc hor radius, vert radius, rotation, large arc flag (go long way between points), sweep flag (clockwise or counter), end points -->
+        <svg width="24" height="24" id="moon-icon">
+          <path fill="currentColor" d="M 20, 5 A 10 10 0 1 0 20, 20 A 8 7 0 0 1 20, 5"></path>
+        </svg>
+        <span id="ball"></span>
+      </label>
+    </div>
+    <main>
+      <div class="flex-container">
+        <div class="flex-clm soft-shadow">
+          <div>
+            <a href="https://christinabaudais.com/" target="_blank">
+              <div class="imgWrap">
+                <img src="/assets/files/christinabaudais.com.png" class="previewImg" />
+              </div>
+              <h3 class="title">Art Portfolio</h3>
+              christinabaudais.com
+            </a>
+            <div class="tags">
+              <p>Eleventy (11ty)</p>
+              <p>Node.js</p>
+              <p>HTML</p>
+              <p>CSS</p>
+              <p>Javascript</p>
+              <p>Nunjucks</p>
             </div>
           </div>
-        </li>
-        <br />
-        <li>
-          <b>Sciences Mag Junior <i>(professional work)</i>: </b><a rel="nofollow ugc" href="https://lalibertesciencesmagjunior.ca/" target="_blank">lalibertesciencesmagjunior.ca</a>
-          <ul>
-            <li>Made with WordPress and Elementor. Done during summer job at <i>Pop Communications</i>.</li>
-            <li>Integrated features and functionality plugins.</li>
-            <li>Saved page snapshots:</li>
-          </ul>
-          <div class="flex-container">
-            <div class="flex-clm">
-              <a href="/assets/files/Sciences Mag Junior - lalibertesciencesmagjunior.ca.jpg" data-fancybox="smj" class="fancyboxImg">
-                <img src="/assets/files/Sciences Mag Junior - lalibertesciencesmagjunior.ca.jpg" />
-                <p>Home Page</p>
-              </a>
+          <p class="desc">
+            Development: Christina Baudais
+            <br />
+            Design: Christina Baudais
+          </p>
+        </div>
+        <div class="flex-clm soft-shadow">
+          <div>
+            <div class="imgWrap"><img src="assets/noImageFound1024.png" class="previewImg" /></div>
+            <!-- <a rel="nofollow ugc" href="https://cpf.ca/" target="_blank"> -->
+            <h3 class="title">Canadian Parents for French - National Website</h3>
+            <p class="desc">
+              cpf.ca
+              <small>(in development)</small>
+            </p>
+            <!-- </a> -->
+            <div class="tags">
+              <p>WordPress</p>
+              <p>Elementor</p>
+              <p>HTML</p>
+              <p>CSS</p>
+              <p>Javascript</p>
+              <p>PHP</p>
             </div>
-            <div class="flex-clm">
-              <a href="/assets/files/Sciences Mag Junior No3 FR – lalibertesciencesmagjunior.ca.jpg" data-fancybox="smj" class="fancyboxImg">
-                <img src="/assets/files/Sciences Mag Junior No3 FR – lalibertesciencesmagjunior.ca.jpg" />
-                <p>Single Magazine Reader Page</p>
-              </a>
-            </div>
-            <div class="flex-clm">
-              <a href="/assets/files/Sciences mag Junior Covid Qui_ Corona Quoi_ – lalibertesciencesmagjunior.ca.jpg" data-fancybox="smj" class="fancyboxImg">
-                <img src="/assets/files/Sciences mag Junior Covid Qui_ Corona Quoi_ – lalibertesciencesmagjunior.ca.jpg" />
-                <p>Videos Page</p>
-              </a>
+            <div class="desc">
+              <p>
+                <b><i>Saved Page Snapshot:</i></b>
+              </p>
+              <i>
+                <a
+                  href="/assets/files/CPF Giving Tuesday Campaign - Canadian Parents for French - National - cpf.ca.jpg"
+                  data-fancybox="cpf"
+                  data-caption="CPF Giving Tuesday Campaign"
+                  class="fancyboxImg">
+                  <!-- <img src="/assets/files/CPF Giving Tuesday Campaign - Canadian Parents for French - National - cpf.ca.jpg" /> -->
+                  <p>CPF Giving Tuesday Campaign</p>
+                </a>
+              </i>
             </div>
           </div>
-        </li>
-        <br />
-        <li>
-          <b>Webstore. <i>(IMD1005_Web_Dev) Assignment 2</i>: </b><a href="/webstore/index.html" target="_blank">cbaudais.github.io/webstore</a>
-          <ul>
-            <li>
-              Replica of a website coded from scratch, based on a given
-              <a href="/webstore/WebsiteRef.jpg" data-fancybox="webstore"><i>reference image</i></a
-              >, for Web Development Course at university.
-            </li>
-          </ul>
-        </li>
-        <br />
-        <li>
-          <b>FineLineStudio: 5 Bay Learning <i>(IMD1004_Design_Processes) Adobe XD Prototype for client</i>: </b
-          ><a href="https://xd.adobe.com/view/fc186b27-5ac8-41db-928f-51f2370d170f-a94b/?fullscreen" target="_blank">FineLineStudio: 5 Bay Learning Mockup</a> <i>(Group Project)</i>
-          <ul>
-            <li>Created prototype functionalities, and layouts of most pages: Home, About Us, Videos (and its sub-pages), plus interactions on Store front page.</li>
-          </ul>
-        </li>
-        <br />
-        <!-- <li>
+          <p class="desc">
+            Layout Design & Development: Christina Baudais
+            <br />
+            Development: DNSnetworks
+            <br />
+            Design: Alphabet®Creative
+          </p>
+        </div>
+        <div class="flex-clm soft-shadow">
+          <div>
+            <a rel="nofollow ugc" href="https://lalibertesciencesmagjunior.ca/" target="_blank">
+              <div class="imgWrap"><img src="assets/files/Sciences Mag Junior - lalibertesciencesmagjunior.ca.jpg" class="previewImg" /></div>
+              <h3 class="title">Sciences Mag Junior</h3>
+              lalibertesciencesmagjunior.ca
+            </a>
+            <div class="tags">
+              <p>WordPress</p>
+              <p>Elementor</p>
+              <p>Local WP</p>
+            </div>
+            <!-- <ul>
+              <li>Made with WordPress and Elementor. Done during summer job at <i>Pop Communications</i>.</li>
+              <li>Integrated features and functionality plugins.</li>
+              <li>Saved page snapshots:</li>
+            </ul> -->
+            <div class="desc">
+              <p>
+                <b><i>Saved Page Snapshot:</i></b>
+              </p>
+              <i>
+                <a href="/assets/files/Sciences Mag Junior - lalibertesciencesmagjunior.ca.jpg" data-fancybox="smj" data-caption="Home Page" class="fancyboxImg">
+                  <!-- <img src="/assets/files/Sciences Mag Junior - lalibertesciencesmagjunior.ca.jpg" /> -->
+                  <p>Home Page</p>
+                </a>
+                <a href="/assets/files/Sciences Mag Junior No3 FR – lalibertesciencesmagjunior.ca.jpg" data-fancybox="smj" data-caption="Single Magazine Reader Page" class="fancyboxImg">
+                  <!-- <img src="/assets/files/Sciences Mag Junior No3 FR – lalibertesciencesmagjunior.ca.jpg" /> -->
+                  <p>Single Magazine Reader Page</p>
+                </a>
+                <a href="/assets/files/Sciences mag Junior Covid Qui_ Corona Quoi_ – lalibertesciencesmagjunior.ca.jpg" data-fancybox="smj" data-caption="Videos Page" class="fancyboxImg">
+                  <!-- <img src="/assets/files/Sciences mag Junior Covid Qui_ Corona Quoi_ – lalibertesciencesmagjunior.ca.jpg" /> -->
+                  <p>Videos Page</p>
+                </a>
+              </i>
+            </div>
+          </div>
+          <p class="desc">
+            Development: Christina Baudais
+            <br />
+            Design: Christina Baudais
+          </p>
+        </div>
+        <div class="flex-clm soft-shadow">
+          <div>
+            <a href="/webstore/index.html" target="_blank">
+              <div class="imgWrap"><img src="assets/files/Webstore. - localhost.png" class="previewImg" /></div>
+              <h3 class="title">Webstore. <i>(IMD1005_Web_Dev) - Assignment 2</i></h3>
+              cbaudais.github.io/webstore
+            </a>
+            <div class="tags">
+              <p>HTML</p>
+              <p>CSS</p>
+            </div>
+            <p class="desc">Replica of a Web Design coded from scratch, based on a reference image given in Web Dev Course at university.</p>
+          </div>
+          <p class="desc">
+            Development: Christina Baudais
+            <br />
+            Design: <a href="/webstore/WebsiteRef.jpg" data-fancybox="webstore"><i>Reference Image</i></a>
+          </p>
+        </div>
+        <div class="flex-clm soft-shadow">
+          <div>
+            <a href="https://xd.adobe.com/view/fc186b27-5ac8-41db-928f-51f2370d170f-a94b/?fullscreen" target="_blank">
+              <div class="imgWrap"><img src="assets/files/FineLineStudio-5 Bay Learning.png" class="previewImg" /></div>
+              <h3 class="title">5 Bay Learning: Prototype <i>(IMD1004_Design_Processes) - Group Project</i></h3>
+              FineLineStudio: 5 Bay Learning Mockup</a
+            >
+            <div class="tags">
+              <p>Adobe XD</p>
+            </div>
+            <p class="desc">Created prototype functionalities and layouts of following pages: Home, About Us, Videos (and its sub-pages), and interactions on Store front page.</p>
+          </div>
+        </div>
+        <!-- <div class="flex-clm soft-shadow">
           <b>Math tutorial website <i>(IMD1005_Web_dev)</i>:</b> <a href="/freemath/Home.html" target="_blank">cbaudais.github.io/freemath</a> <i>(Group Project)</i>
           <ul>
             <li>Group project, but have since tweaked some of the code styling myself.</li>
@@ -102,13 +190,10 @@
             <li>&#9888; No mobile support.</li>
             <li>&#9888; Home page parallax no longer supported.</li>
           </ul>
-        </li> -->
-        <!-- <li><a href="https://warriorwildpaw.wixsite.com/wildyartsy" target="_blank">Wix Portfolio</a><i> (for Algonquin College courses)</i></li> -->
-        <!-- <li>
-          <a href="http://wildyartsy.myartsonline.com/website/home.html" target="_blank">Mini portfolio project</a>
-        </li> -->
-      </ul>
+        </div> -->
+        <!-- <div class="flex-clm soft-shadow"><a href="https://warriorwildpaw.wixsite.com/wildyartsy" target="_blank">Wix Portfolio</a><i> (for Algonquin College courses)</i></div> -->
+      </div>
     </main>
-    <script></script>
+    <p class="copy text-center">Copyright &copy; Christina Baudais</p>
   </body>
 </html>
