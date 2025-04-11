@@ -209,6 +209,14 @@ ul {
     justify-content: space-between;
 }
 
+ul.clm {
+    /* padding: 0px; */
+    /* list-style-type: '- '; */
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+}
+
 .previewImg {
     position: relative;
     width: 100%;
