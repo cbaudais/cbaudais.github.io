@@ -25,7 +25,7 @@ body {
     font-size: 16px;
     color: var(--text-color-normal);
     background-color: var(--bkg-normal);
-    padding: 1.5em;
+    padding: 1rem;
     transition: all 0.5s;
     word-wrap: break-word;
 }
@@ -207,6 +207,7 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 14px;
 }
 
 ul.clm {
@@ -262,8 +263,20 @@ ul.clm {
 }
 
 .title {
-    margin: 0.3em 0;
     color: var(--text-color-normal);
+    margin: 0.5em;
+    font-size: 1.25em;
+}
+
+.desc,
+.site-link {
+    margin: 0.6em;
+    font-size: 16px;
+}
+
+.copy {
+    margin-top: auto;
+    font-size: 12px;
 }
 
 .tags {
@@ -283,16 +296,6 @@ ul.clm {
         -4px -4px 6px var(--shadow-light) inset,
         4px 4px 6px var(--shadow-dark) inset; */
     transition: all 0.5s;
-}
-
-.desc {
-    color: var(--text-color-normal);
-    font-size: 14px;
-}
-
-.copy {
-    margin-top: auto;
-    font-size: 12px;
 }
 
 @media (min-width:1024px) {
